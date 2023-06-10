@@ -1,6 +1,5 @@
 import { Avatar, Space, Tag, Tooltip, Typography } from "antd";
 import { Link } from "react-router-dom";
-const { Title, Paragraph, Text } = Typography;
 import {
   AntDesignOutlined,
   CalendarOutlined,
@@ -9,20 +8,24 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 
+const { Title, Paragraph, Text } = Typography;
+
 export const Bio = () => {
   return (
     <div style={{ margin: "2.2rem 1rem" }}>
-      <Title style={{ color: "white", margin: "0" }} level={4}>
+      <Title style={{ margin: "0" }} level={4}>
         unfold
       </Title>
 
       <Space align="center">
-        <Paragraph style={{ color: "#6E7377", margin: "0" }}>@unfoldco</Paragraph>
-        <Tag style={{ color: "#6E7377", background: "#202327", border: "none" }}>Follows you</Tag>
+        <Paragraph type="secondary" style={{ margin: "0" }}>
+          @unfoldco
+        </Paragraph>
+        <Tag style={{ border: "none" }}>Follows you</Tag>
       </Space>
 
       <Space style={{ marginTop: "1rem" }}>
-        <Paragraph style={{ color: "white", margin: "0" }}>
+        <Paragraph style={{ margin: "0" }}>
           Design more gooder. Creative design agency creating solutions for brands like Solana, Facebook,
           Ripple, Merck, Adobe, Figma, & more. Working on <Link to="/">@DroniesNFT.</Link>
         </Paragraph>
@@ -31,28 +34,28 @@ export const Bio = () => {
       <Space style={{ width: "100%", marginTop: "1rem", gap: "2.25rem" }}>
         <Space>
           <EnvironmentOutlined style={{ color: "#6E7377" }} />
-          <Text style={{ color: "#6E7377" }}>Sarasota, FL</Text>
+          <Text type="secondary">Sarasota, FL</Text>
         </Space>
 
         <Space>
           <DisconnectOutlined style={{ color: "#6E7377" }} />
-          <Text style={{ color: "#6E7377" }}>
+          <Text type="secondary">
             <Link to="www.google.com">dribble.com/abcd</Link>
           </Text>
         </Space>
 
         <Space>
           <CalendarOutlined style={{ color: "#6E7377" }} />
-          <Text style={{ color: "#6E7377" }}>Joined Sepetember, 2018</Text>
+          <Text type="secondary">Joined Sepetember, 2018</Text>
         </Space>
       </Space>
 
       <Space style={{ marginTop: "1rem", width: "100%" }}>
-        <Link to="/followers" style={{ color: "white" }}>
-          <b>122</b> <span style={{ color: "#6E7377" }}>followers</span>
+        <Link to="/followers" style={{}}>
+          <b>122</b> <Text type="secondary">followers</Text>
         </Link>
-        <Link to="/following" style={{ color: "white" }}>
-          <b>4873</b> <span style={{ color: "#6E7377" }}>following</span>
+        <Link to="/following">
+          <b>4873</b> <Text type="secondary">following</Text>
         </Link>
       </Space>
 
@@ -105,7 +108,7 @@ export const Bio = () => {
           />
         </Avatar.Group>
 
-        <Text style={{ color: "#6E7377", fontSize: "11px" }}>
+        <Text type="secondary" style={{ fontSize: "11px" }}>
           Followed by New Meta World Peace, Chi Birmingham, and 20 others you follow
         </Text>
       </Space>

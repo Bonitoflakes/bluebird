@@ -14,7 +14,7 @@ export const Banner = () => {
   return (
     <>
       <div style={{ position: "relative", gap: "0" }}>
-        <Image src={banner} alt="banner" preview={false} />
+        <Image src={banner} alt="banner" preview width="100%" />
         <Avatar
           src={avatar}
           alt="avatar"
@@ -26,38 +26,19 @@ export const Banner = () => {
 
       {/* Button Group */}
       <Space style={{ width: "100%", justifyContent: "end", marginTop: "1rem", paddingRight: "1.2rem" }}>
-        <Button
-          shape="circle"
-          className="centered removeshadow"
-          style={{ background: "transparent", border: "1px solid #536471" }}
-        >
-          <Icon component={dots} />
+        <Button shape="circle" type="text" className="centered border-1">
+          <Icon component={dots} style={{ color: "red" }} />
         </Button>
 
-        <Button
-          shape="circle"
-          className="centered"
-          style={{ background: "transparent", border: "1px solid #536471" }}
-        >
-          <MsgIcon style={{ color: "white" }} />
+        <Button shape="circle" className="centered border-1" type="text">
+          <NotifyIcon style={{ color: "red" }} />
         </Button>
 
-        <Button
-          shape="circle"
-          className="centered"
-          style={{ background: "transparent", border: "1px solid #536471" }}
-        >
-          <NotifyIcon style={{ color: "white" }} />
+        <Button shape="circle" type="text" className="centered border-1">
+          <MsgIcon style={{ color: "red" }} />
         </Button>
 
-        <Button
-          style={{
-            background: "transparent",
-            border: "1px solid #536471",
-            color: "white",
-            borderRadius: "100px",
-          }}
-        >
+        <Button type="default" className="border-1">
           Following
         </Button>
       </Space>

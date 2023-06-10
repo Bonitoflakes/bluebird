@@ -10,21 +10,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
-*,
-::after,
-::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
-  scroll-behavior: smooth;
-  background-color: black;
-}
-
-#root {
-  background-color: black;
+  /* color-scheme: light dark; */
 }
 
 .centered {
@@ -33,7 +20,7 @@ html {
   justify-content: center !important;
 }
 
-.removeshadow {
+.shadow-0 {
   box-shadow: none;
 }
 
@@ -45,14 +32,16 @@ html {
   gap: 12px !important;
 }
 
+.border-1 {
+  border: 1px solid #536471;
+}
+
 /* Input Field */
 .ant-input {
   border-radius: 100px;
   border-color: gray;
-  background-color: black;
-  color: white;
   width: 100%;
-  padding-left: 1rem;
+  padding-left: 1rem !important;
 
   &:focus,
   &:hover {
@@ -61,6 +50,25 @@ html {
 
   &::placeholder {
     color: rgb(120, 120, 120);
-    padding-left: 1rem;
   }
+}
+
+.ant-btn {
+  box-shadow: none !important;
+  /* &:hover {
+    color: black !important;
+  } */
+}
+
+/* @media (prefers-color-scheme: dark) {
+  .ant-btn {
+    &:hover {
+      color: white !important;
+    }
+  }
+} */
+
+.ant-menu {
+  border: none !important;
+  /* background-color: green !important; */
 }

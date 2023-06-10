@@ -6,7 +6,7 @@ import { ReactComponent as X } from "../../assets/x.svg";
 
 export const SidebarRight = () => {
   return (
-    <div style={{ maxWidth: "350px", background: "black", color: "white" }}>
+    <div style={{ maxWidth: "350px", padding: "1rem" }}>
       <Search />
       <Suggestions />
       <Trending />
@@ -16,8 +16,8 @@ export const SidebarRight = () => {
 
 export const Suggestions = () => {
   return (
-    <div style={{ background: "#202327", padding: "1rem", borderRadius: "1.125rem", margin: "1rem 0" }}>
-      <Title level={5} style={{ color: "white", fontSize: "20px", fontWeight: "900" }}>
+    <div style={{ borderRadius: "1.125rem", margin: "1rem 0" }}>
+      <Title level={5} style={{ fontSize: "20px", fontWeight: "900" }}>
         You might like
       </Title>
       <SuggestionTile />
@@ -33,19 +33,19 @@ export const SuggestionTile = () => {
       <Space className="gap-12">
         <Avatar
           src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1"
-          style={{ border: "1px solid gray" }}
+          className="border-1"
           size={48}
         />
 
         <Space direction="vertical" className="gap-0">
-          <Title style={{ color: "white", margin: "0" }} level={5}>
+          <Title style={{ margin: "0" }} level={5}>
             unfoldco
           </Title>
-          <Text style={{ color: "#6E7377" }}>@thxdr</Text>
+          <Text type="secondary">@thxdr</Text>
         </Space>
       </Space>
 
-      <Button style={{ borderRadius: "100px", background: "white", color: "black" }}>Follow</Button>
+      <Button type="primary">Follow</Button>
     </Space>
   );
 };
@@ -57,10 +57,7 @@ export const Search = () => {
       style={{
         margin: "1rem 0",
         borderRadius: "100px",
-        background: "black",
-        color: "white",
         width: "100%",
-        paddingLeft: "1rem!important",
       }}
       allowClear={{
         clearIcon: (
@@ -84,5 +81,5 @@ export const Search = () => {
 };
 
 export const Trending = () => {
-  return <div style={{ background: "#202327", padding: "1rem", borderRadius: "1.125rem" }}>Trending</div>;
+  return <div style={{ borderRadius: "1.125rem" }}>Trending</div>;
 };
