@@ -1,0 +1,35 @@
+.sidebar {
+  overflow: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.menu {
+  background: black;
+  color: white;
+  font-size: 12px !important;
+}
+
+.menuItem {
+  display: flex !important;
+  align-items: center !important;
+  width: fit-content !important;
+  font-size: 20px !important;
+  padding: 12px !important;
+  margin: 1rem 20px 1rem 20px !important;
+  text-transform: capitalize !important;
+  border-radius: 9999px !important;
+  position: relative !important;
+}
+
+.menuItem:hover {
+  background-color: #e7e9ea22 !important;
+  color: white !important;
+}
+
+.logo {
+  margin: 1rem 20px 1rem 20px !important;
+  padding: 12px !important;
+}
