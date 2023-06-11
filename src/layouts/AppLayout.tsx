@@ -45,43 +45,9 @@ export const AppLayout = ({ darkMode, setDarkMode }: IAppLayout) => {
       style={{
         minHeight: "100dvh",
         margin: "0 auto",
-        // maxWidth: "1180px"
+        maxWidth: "1200px",
       }}
     >
-      <Sider
-        className={styles.sidebar}
-        collapsible
-        trigger={null}
-        collapsed={isCollapsed}
-        onMouseEnter={handleCollapse}
-        onMouseLeave={handleCollapse}
-        width={225}
-        theme={darkMode ? "dark" : "light"}
-      >
-        <nav
-          style={{
-            alignItems: isCollapsed ? "center" : "start",
-            background: token.colorBgLayout,
-          }}
-          className={styles.nav}
-        >
-          {/* Just a wrapper*/}
-          <div>
-            <div className={styles.logo}>
-              <Link to="/">
-                <LogoIcon style={{ color: token.colorPrimary }} />
-              </Link>
-            </div>
-
-            <SidebarLeft darkMode isCollapsed={isCollapsed} activeMenu={activeMenu} />
-          </div>
-
-          <div className={styles.settings}>
-            <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
-          </div>
-        </nav>
-      </Sider>
-
       <Layout>
         <Content className="border-1-left border-1-right">
           <AppRoutes />
@@ -103,5 +69,45 @@ export const AppLayout = ({ darkMode, setDarkMode }: IAppLayout) => {
       </Sider>
       {/*  */}
     </Layout>
+  );
+};
+
+import React from "react";
+
+export const PutMeAboveLayout = () => {
+  return (
+    <Sider
+      className={styles.sidebar}
+      collapsible
+      trigger={null}
+      collapsed={isCollapsed}
+      onMouseEnter={handleCollapse}
+      onMouseLeave={handleCollapse}
+      width={225}
+      theme={darkMode ? "dark" : "light"}
+    >
+      <nav
+        style={{
+          alignItems: isCollapsed ? "center" : "start",
+          background: token.colorBgLayout,
+        }}
+        className={styles.nav}
+      >
+        {/* Just a wrapper*/}
+        <div>
+          <div className={styles.logo}>
+            <Link to="/">
+              <LogoIcon style={{ color: token.colorPrimary }} />
+            </Link>
+          </div>
+
+          <SidebarLeft darkMode isCollapsed={isCollapsed} activeMenu={activeMenu} />
+        </div>
+
+        <div className={styles.settings}>
+          <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+        </div>
+      </nav>
+    </Sider>
   );
 };
