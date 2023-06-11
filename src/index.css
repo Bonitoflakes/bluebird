@@ -75,8 +75,24 @@ html {
   padding: 0;
 }
 
+.p-0-75 {
+  padding: 0.75rem !important;
+}
+
+.p-1 {
+  padding: 1rem !important;
+}
+
+.m-1 {
+  margin: 1rem !important;
+}
+
 .gap-0 {
   gap: 0px !important;
+}
+
+.gap-0-25 {
+  gap: 0.25rem !important;
 }
 
 .gap-0-75 {
@@ -159,6 +175,45 @@ html {
   background-color: blue;
 }
 
+.orange {
+  background-color: orange;
+}
+
+
 .w-100 {
   width: 100%;
+}
+
+.tweet-actions--interactive {
+  display: flex;
+}
+
+.action--like:hover .anticon,
+.action--like:hover .action--like-text {
+  transition: 0.3s ease color;
+  color: rgb(228, 110, 130) !important;
+}
+
+.action--retweet:hover .anticon,
+.action--retweet:hover .action--retweet-text {
+  transition: 0.3s ease color;
+  color: rgb(61, 234, 130) !important;
+}
+
+.action--view:hover .anticon,
+.action--view:hover .action--view-text {
+  transition: 0.3s ease color;
+  color: rgb(47, 115, 241) !important;
+}
+
+.action--comment:hover .anticon,
+.action--comment:hover .action--comment-text {
+  transition: 0.3s ease color;
+  color: rgb(47, 115, 241) !important;
+}
+
+.action--share:hover .anticon,
+.action--share:hover .action--share-text {
+  transition: 0.3s ease color;
+  color: rgb(47, 115, 241) !important;
 }
