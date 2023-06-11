@@ -61,6 +61,7 @@ export const AppLayout = ({ darkMode, setDarkMode }: IAppLayout) => {
         <nav
           style={{
             alignItems: isCollapsed ? "center" : "start",
+            background: token.colorBgLayout,
           }}
           className={styles.nav}
         >
@@ -72,9 +73,7 @@ export const AppLayout = ({ darkMode, setDarkMode }: IAppLayout) => {
               </Link>
             </div>
 
-            <Menu theme={darkMode ? "dark" : "light"} mode="vertical">
-              <SidebarLeft darkMode isCollapsed={isCollapsed} activeMenu={activeMenu} />
-            </Menu>
+            <SidebarLeft darkMode isCollapsed={isCollapsed} activeMenu={activeMenu} />
           </div>
 
           <div className={styles.settings}>
@@ -84,7 +83,7 @@ export const AppLayout = ({ darkMode, setDarkMode }: IAppLayout) => {
       </Sider>
 
       <Layout>
-        <Content className="border-1">
+        <Content className="border-1-left border-1-right">
           <AppRoutes />
         </Content>
       </Layout>
@@ -96,6 +95,9 @@ export const AppLayout = ({ darkMode, setDarkMode }: IAppLayout) => {
         breakpoint="lg"
         collapsedWidth="0"
         trigger={null}
+        style={{
+          background: token.colorBgLayout,
+        }}
       >
         <SidebarRight />
       </Sider>

@@ -1,5 +1,6 @@
 .sidebar {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: fixed;
   left: 0;
   top: 0;

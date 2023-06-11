@@ -44,6 +44,14 @@ html {
   border: 1px solid #536471;
 }
 
+.border-1-left {
+  border-left: 1px solid #536471;
+}
+
+.border-1-right {
+  border-right: 1px solid #536471;
+}
+
 .relative {
   position: relative !important;
 }

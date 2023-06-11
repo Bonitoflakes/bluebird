@@ -55,7 +55,13 @@ export const SidebarLeft = ({
 
   return (
     <>
-      <Menu theme={darkMode ? "dark" : "light"} mode="vertical">
+      <Menu
+        theme={darkMode ? "dark" : "light"}
+        mode="vertical"
+        style={{
+          background: token.colorBgLayout,
+        }}
+      >
         {SideBarLinks.map(renderMenuItem)}
       </Menu>
     </>

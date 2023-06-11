@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Profile } from "../pages/Profile";
-import { ConfigCheck } from "../theme/Configchecker";
+// import { ConfigCheck } from "../theme/Configchecker";
 
 export const AppRoutes = () => {
   return (
