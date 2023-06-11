@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Layout, Menu, Switch, theme } from "antd";
+import { Layout, Switch, theme } from "antd";
 
 import { SidebarRight } from "../components/Sidebar/SidebarRight";
 import { SideBarLinks } from "../constants/Sidebarlinks";
