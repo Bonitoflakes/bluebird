@@ -7,7 +7,7 @@ export const Profile = () => {
   return (
     // <div style={{ maxWidth: "600px" }}>
     <div>
-      <Space style={{ gap: "16px" }}>
+      <Space className="gap-1">
         <Button style={{ border: "none" }} shape="circle">
           <ArrowLeftOutlined style={{}} />
         </Button>

@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Layout, Menu, Switch, theme } from "antd";
 
-import { AppRoutes } from "../App";
 import { SidebarRight } from "../components/Sidebar/SidebarRight";
 import { SideBarLinks } from "../constants/Sidebarlinks";
 
 import styles from "./sidebar.module.css";
 import { LogoIcon } from "../Icons/logo";
 import { SidebarLeft } from "../components/Sidebar/SidebarLeft";
+import { AppRoutes } from "../routes/Approutes";
 
 interface IAppLayout {
   darkMode: boolean;

@@ -6,17 +6,17 @@ const notifySvg = () => (
     <path
       d="M4.6532 12.0822C4.7013 13.5734 5.92457 14.7692 7.43648 14.7692C8.94839 14.7692 10.1717 13.5734 10.2198 12.0822"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
     />
     <path
       d="M7.43648 1.23077C5.07927 1.23077 3.05195 2.90074 2.5915 5.20984L1.23077 12.0822H13.6353L12.9549 8.63226"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
     />
-    <path d="M11.608 1.23077V6.9073" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" />
-    <path d="M14.4463 4.06903H8.76971" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" />
+    <path d="M11.608 1.23077V6.9073" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" />
+    <path d="M14.4463 4.06903H8.76971" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" />
   </svg>
 );
 

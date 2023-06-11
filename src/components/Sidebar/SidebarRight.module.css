@@ -1,0 +1,9 @@
+.xIcon {
+  color: black;
+  height: 1.6rem;
+  width: 1.6rem;
+  background: rgb(29, 156, 240);
+  border-radius: 100%;
+  padding: 0.4rem;
+  margin-bottom: -5px;
+}

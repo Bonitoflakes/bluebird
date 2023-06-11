@@ -31,7 +31,7 @@ export const Bio = () => {
         </Paragraph>
       </Space>
 
-      <Space style={{ width: "100%", marginTop: "1rem", gap: "2.25rem" }}>
+      <Space style={{ width: "100%", marginTop: "1rem" }} className="gap-2-25">
         <Space>
           <EnvironmentOutlined style={{ color: "#6E7377" }} />
           <Text type="secondary">Sarasota, FL</Text>

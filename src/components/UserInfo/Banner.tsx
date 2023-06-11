@@ -13,7 +13,7 @@ import Icon from "@ant-design/icons";
 export const Banner = () => {
   return (
     <>
-      <div style={{ position: "relative", gap: "0" }}>
+      <div className="gap-0 relative">
         <Image src={banner} alt="banner" preview width="100%" />
         <Avatar
           src={avatar}

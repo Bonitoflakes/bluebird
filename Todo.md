@@ -1,0 +1,4 @@
+- [ ] setup alias.
+- [ ] add loaders.
+- [ ] fetch from API.
+- [ ] Complete Feed page.

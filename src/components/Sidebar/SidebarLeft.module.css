@@ -7,7 +7,6 @@
   margin: 1rem 20px 1rem 20px !important;
   text-transform: capitalize !important;
   border-radius: 9999px !important;
-  position: relative !important;
 }
 
 .menuItem:hover {

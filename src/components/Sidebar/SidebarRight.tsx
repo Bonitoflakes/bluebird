@@ -4,6 +4,8 @@ const { Title, Text } = Typography;
 
 import { ReactComponent as X } from "../../assets/x.svg";
 
+import styles from "../Sidebar/SidebarRight.module.css";
+
 export const SidebarRight = () => {
   return (
     <div style={{ maxWidth: "350px", padding: "1rem" }}>
@@ -16,7 +18,7 @@ export const SidebarRight = () => {
 
 export const Suggestions = () => {
   return (
-    <div style={{ borderRadius: "1.125rem", margin: "1rem 0" }}>
+    <div style={{ margin: "1rem 0" }}>
       <Title level={5} style={{ fontSize: "20px", fontWeight: "900" }}>
         You might like
       </Title>
@@ -30,7 +32,7 @@ export const Suggestions = () => {
 export const SuggestionTile = () => {
   return (
     <Space style={{ width: "100%", justifyContent: "space-between", marginBottom: "24px" }}>
-      <Space className="gap-12">
+      <Space className="gap-0-75">
         <Avatar
           src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1"
           className="border-1"
@@ -60,19 +62,7 @@ export const Search = () => {
         width: "100%",
       }}
       allowClear={{
-        clearIcon: (
-          <X
-            style={{
-              color: "black",
-              height: "1.6rem",
-              width: "1.6rem",
-              background: "rgb(29, 156, 240)",
-              borderRadius: "100%",
-              padding: "0.4rem",
-              marginBottom: "-5px",
-            }}
-          />
-        ),
+        clearIcon: <X className={styles.xIcon} />,
       }}
       size="large"
       prefix={<SearchOutlined size={48} style={{}} />}

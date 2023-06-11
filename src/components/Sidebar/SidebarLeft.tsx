@@ -1,10 +1,9 @@
-import { Menu, theme } from "antd";
+import { Menu } from "antd";
 import { SideBarLinks } from "../../constants/Sidebarlinks";
 import { Link } from "react-router-dom";
 
 import styles from "../Sidebar/SidebarLeft.module.css";
-
-const { useToken } = theme;
+import { useConfig } from "../../hooks/useToken";
 
 export const SidebarLeft = ({
   darkMode,
@@ -15,15 +14,14 @@ export const SidebarLeft = ({
   activeMenu: number;
   isCollapsed: boolean;
 }) => {
-  const { token } = useToken();
+  const { token } = useConfig();
 
-  function renderMenuItem({ icon, label }: { icon: string; label: string }, index: number) {
-    const isActive = activeMenu === index + 1;
-    console.log(isCollapsed);
+  function renderMenuItem({ icon, label, id }: { icon: string; label: string; id: number }) {
+    const isActive = activeMenu === id;
 
     return (
       <Menu.Item
-        key={String(index + 1)}
+        key={String(id)}
         style={{
           fontWeight: isActive ? "700" : "400",
           background: isActive ? "#06acff3a" : "none",
