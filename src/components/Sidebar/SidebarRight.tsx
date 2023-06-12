@@ -1,75 +1,27 @@
-import { SearchOutlined } from "@ant-design/icons";
-import { Avatar, Button, Input, Space, Typography } from "antd";
-const { Title, Text } = Typography;
+import Sider from "antd/es/layout/Sider";
+import { SidebarColumn } from "./SidebarColumn";
+import { useCustomTheme } from "../../contexts/CustomThemeContext";
+import { useConfig } from "../../hooks/useToken";
 
-import { ReactComponent as X } from "../../assets/x.svg";
-
-import styles from "../Sidebar/SidebarRight.module.css";
+import styles from "./styles/sidebar.module.css";
 
 export const SidebarRight = () => {
+  const { token } = useConfig();
+  const { darkMode } = useCustomTheme();
+
   return (
-    <div style={{ maxWidth: "350px", padding: "1rem" }}>
-      <Search />
-      <Suggestions />
-      <Trending />
-    </div>
-  );
-};
-
-export const Suggestions = () => {
-  return (
-    <div style={{ margin: "1rem 0" }}>
-      <Title level={5} style={{ fontSize: "20px", fontWeight: "900" }}>
-        You might like
-      </Title>
-      <SuggestionTile />
-      <SuggestionTile />
-      <SuggestionTile />
-    </div>
-  );
-};
-
-export const SuggestionTile = () => {
-  return (
-    <Space style={{ width: "100%", justifyContent: "space-between", marginBottom: "24px" }}>
-      <Space className="gap-0-75">
-        <Avatar
-          src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1"
-          className="border-1"
-          size={48}
-        />
-
-        <Space direction="vertical" className="gap-0">
-          <Title style={{ margin: "0" }} level={5}>
-            unfoldco
-          </Title>
-          <Text type="secondary">@thxdr</Text>
-        </Space>
-      </Space>
-
-      <Button type="primary">Follow</Button>
-    </Space>
-  );
-};
-
-export const Search = () => {
-  return (
-    <Input
-      placeholder="Search Twitter"
+    <Sider
+      className={styles.sidebar}
+      width={350}
+      theme={darkMode ? "dark" : "light"}
+      breakpoint="lg"
+      collapsedWidth="0"
+      trigger={null}
       style={{
-        margin: "1rem 0",
-        borderRadius: "100px",
-        width: "100%",
+        background: token.colorBgLayout,
       }}
-      allowClear={{
-        clearIcon: <X className={styles.xIcon} />,
-      }}
-      size="large"
-      prefix={<SearchOutlined size={48} style={{}} />}
-    />
+    >
+      <SidebarColumn />
+    </Sider>
   );
-};
-
-export const Trending = () => {
-  return <div style={{ borderRadius: "1.125rem" }}>Trending</div>;
 };

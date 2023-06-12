@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { ConfigProvider, theme } from "antd";
 
 import { AppLayout } from "./layouts/AppLayout";
 import { darkTheme, darkComponents, lightTheme } from "./theme";
 
 import "antd/dist/reset.css";
+import { useCustomTheme } from "./contexts/CustomThemeContext";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const { darkMode } = useCustomTheme();
 
   return (
     <ConfigProvider
@@ -16,7 +16,7 @@ function App() {
         token: darkMode ? { ...darkTheme, ...darkComponents } : lightTheme,
       }}
     >
-      <AppLayout darkMode={darkMode} setDarkMode={setDarkMode} />
+      <AppLayout />
     </ConfigProvider>
   );
 }
