@@ -23,6 +23,7 @@ export const SidebarLeft = ({ activeMenu }: { activeMenu: number }) => {
     <Sider
       className={styles.sidebar}
       collapsible
+      collapsedWidth={90}
       trigger={null}
       collapsed={isCollapsed}
       onMouseEnter={handleCollapse}
@@ -32,7 +33,6 @@ export const SidebarLeft = ({ activeMenu }: { activeMenu: number }) => {
     >
       <nav
         style={{
-          alignItems: isCollapsed ? "center" : "start",
           background: token.colorBgLayout,
         }}
         className={styles.nav}

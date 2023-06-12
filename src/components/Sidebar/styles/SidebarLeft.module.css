@@ -4,7 +4,7 @@
 }
 
 .settings {
-  margin: 1rem 20px 1rem 20px !important;
+  margin: 1rem 20px 1rem 11px !important;
   padding: 12px !important;
 }
 
@@ -25,5 +25,6 @@
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
+  align-items: start;
   height: 100% !important;
 }
