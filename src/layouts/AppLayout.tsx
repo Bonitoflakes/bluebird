@@ -7,11 +7,13 @@ import { SideBarLinks } from "../constants/Sidebarlinks";
 import { AppRoutes } from "../routes/Approutes";
 import { SidebarLeft } from "../components/Sidebar/SidebarLeft";
 import { SidebarRight } from "../components/Sidebar/SidebarRight";
+import { useConfig } from "../hooks/useToken";
 
 const { Content } = Layout;
 
 export const AppLayout = () => {
   const { pathname } = useLocation();
+  const { token } = useConfig();
 
   const [activeMenu, setActiveMenu] = useState(1);
 
@@ -27,24 +29,26 @@ export const AppLayout = () => {
   }, [pathname]);
 
   return (
-    <Layout
-      style={{
-        minHeight: "100dvh",
-        margin: "0 auto",
-        maxWidth: "1200px",
-      }}
-    >
-      {/*  */}
-      <SidebarLeft activeMenu={activeMenu} />
+    <div style={{ background: token.colorBgLayout }}>
+      <Layout
+        style={{
+          minHeight: "100dvh",
+          margin: "0 auto",
+          maxWidth: "1200px",
+        }}
+      >
+        {/*  */}
+        <SidebarLeft activeMenu={activeMenu} />
 
-      <Layout>
-        <Content className="border-1-left border-1-right">
-          <AppRoutes />
-        </Content>
+        <Layout>
+          <Content className="border-1-left border-1-right">
+            <AppRoutes />
+          </Content>
+        </Layout>
+
+        <SidebarRight />
+        {/*  */}
       </Layout>
-
-      <SidebarRight />
-      {/*  */}
-    </Layout>
+    </div>
   );
 };
