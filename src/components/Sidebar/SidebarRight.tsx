@@ -3,7 +3,7 @@ import { SidebarColumn } from "./SidebarColumn";
 import { useCustomTheme } from "../../contexts/CustomThemeContext";
 import { useConfig } from "../../hooks/useToken";
 
-import styles from "./styles/sidebar.module.css";
+import styles from "./styles/Sidebar.module.css";
 
 export const SidebarRight = () => {
   const { token } = useConfig();
