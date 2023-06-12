@@ -1,69 +1,56 @@
-import { Menu } from "antd";
-import { SideBarLinks } from "../../constants/Sidebarlinks";
+import { Switch } from "antd";
+import Sider from "antd/es/layout/Sider";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
-import styles from "../Sidebar/SidebarLeft.module.css";
+import { LogoIcon } from "../../Icons/logo";
+import { useCustomTheme } from "../../contexts/CustomThemeContext";
 import { useConfig } from "../../hooks/useToken";
+import { SideNavBar } from "./SideNavbar";
 
-export const SidebarLeft = ({
-  darkMode,
-  activeMenu,
-  isCollapsed,
-}: {
-  darkMode: boolean;
-  activeMenu: number;
-  isCollapsed: boolean;
-}) => {
+import styles from "./styles/SidebarLeft.module.css";
+
+export const SidebarLeft = ({ activeMenu }: { activeMenu: number }) => {
   const { token } = useConfig();
+  const { darkMode, toggleDarkMode } = useCustomTheme();
 
-  function renderMenuItem({ icon, label, id }: { icon: string; label: string; id: number }) {
-    const isActive = activeMenu === id;
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
-    return (
-      <Menu.Item
-        key={String(id)}
-        style={{
-          fontWeight: isActive ? "700" : "400",
-          background: isActive ? "#06acff3a" : "none",
-          color: token.colorPrimary,
-        }}
-        className={styles.menuItem}
-      >
-        <Link to={`/${label.toLowerCase()}`} style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={icon}
-            style={{
-              height: "26.5px",
-              filter: isActive
-                ? "invert(47%) sepia(37%) saturate(5171%) hue-rotate(180deg) brightness(101%) contrast(106%)"
-                : "",
-            }}
-            alt={label}
-          />
-          <span
-            style={{
-              marginLeft: !isCollapsed ? "10px" : "0",
-              transition: "0.3s ease all",
-            }}
-          >
-            {isCollapsed ? "" : label}
-          </span>
-        </Link>
-      </Menu.Item>
-    );
+  function handleCollapse() {
+    setIsCollapsed((p) => !p);
   }
 
   return (
-    <>
-      <Menu
-        theme={darkMode ? "dark" : "light"}
-        mode="vertical"
+    <Sider
+      className={styles.sidebar}
+      collapsible
+      collapsedWidth={90}
+      trigger={null}
+      collapsed={isCollapsed}
+      onMouseEnter={handleCollapse}
+      onMouseLeave={handleCollapse}
+      width={225}
+      theme={darkMode ? "dark" : "light"}
+    >
+      <nav
         style={{
           background: token.colorBgLayout,
         }}
+        className={styles.nav}
       >
-        {SideBarLinks.map(renderMenuItem)}
-      </Menu>
-    </>
+        <div>
+          <div className={styles.logo}>
+            <Link to="/">
+              <LogoIcon style={{ color: token.colorPrimary }} />
+            </Link>
+          </div>
+
+          <SideNavBar darkMode isCollapsed={isCollapsed} activeMenu={activeMenu} />
+        </div>
+
+        <div className={styles.settings}>
+          <Switch checked={darkMode} onChange={toggleDarkMode} />
+        </div>
+      </nav>
+    </Sider>
   );
 };

@@ -1,30 +1,29 @@
 import { ThemeConfig } from "antd";
 
 export const darkTheme: ThemeConfig["token"] = {
-  // colorPrimary: "rgb(29, 155, 240)",
   colorPrimary: "#ffffff",
   colorPrimaryHover: "#888888", //==> inputs
   borderRadius: 16,
   // Background
-  colorBgLayout: "black",
-  colorBgContainer: "black",
+  colorBgLayout: "#000",
+  colorBgContainer: "#000",
   // Border
-  colorPrimaryBorder: "white",
-  colorPrimaryBorderHover: "blue",
+  colorPrimaryBorder: "#fff",
+  colorPrimaryBorderHover: "rgb(29,155,240)",
   // Hover & Active States.
-  colorPrimaryActive: "blue",
+  colorPrimaryActive: "rgb(29,155,240)",
   /**
    * Neutral Color
    */
-  colorText: "white", //==> Main text color
-  colorTextLightSolid: "black", //==> button text
+  colorText: "#fff", //==> Main text color
+  colorTextLightSolid: "#000", //==> button text
   /**
    * Control Items
    */
   controlItemBgActive: "#525252",
-  controlItemBgActiveHover: "black",
-  controlOutline: "black",
-  controlItemBgHover: "blue",
+  controlItemBgActiveHover: "#000",
+  controlOutline: "#000",
+  controlItemBgHover: "rgb(29,155,240)",
 
   // Weak colors --> prefix, suffix
   colorTextPlaceholder: "red",
@@ -42,33 +41,33 @@ export const darkComponents: ThemeConfig["components"] = {
     colorPrimaryHover: "rgb(21, 117, 182)", //==> inputs
   },
   Button: {
-    colorPrimaryHover: "#f0f0f0", //==> inputs
+    colorPrimaryHover: "#B7B7B7", //==> inputs
     colorPrimary: "#fff",
   },
 };
 
 export const lightTheme: ThemeConfig["token"] = {
   // Primary theme of the entire application.
-  colorPrimary: "black",
-  colorPrimaryHover: "black", //=> Hover for inputs
+  colorPrimary: "#000",
+  colorPrimaryHover: "#000", //=> Hover for inputs
   borderRadius: 16,
   // Background
-  colorBgLayout: "white",
-  colorBgContainer: "white",
+  colorBgLayout: "#fff",
+  colorBgContainer: "#fff",
   // Border
-  colorPrimaryBorder: "black",
-  colorPrimaryBorderHover: "blue",
+  colorPrimaryBorder: "#000",
+  colorPrimaryBorderHover: "rgb(29,155,240)",
   // Hover & Active States.
-  colorPrimaryActive: "blue",
+  colorPrimaryActive: "rgb(29,155,240)",
   /**
    * Neutral Color
    */
-  colorText: "black", //==> Main text color
-  colorTextLightSolid: "white", //==> button text
+  colorText: "#000", //==> Main text color
+  colorTextLightSolid: "#fff", //==> button text
   /**
    * Control Items
    */
   controlItemBgActive: "#c8c8c8",
-  controlItemBgActiveHover: "white",
-  controlOutline: "white",
+  controlItemBgActiveHover: "#fff",
+  controlOutline: "#fff",
 };
