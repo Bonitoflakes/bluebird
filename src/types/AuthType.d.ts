@@ -12,5 +12,6 @@ export type User = {
 
 export type AuthContextType = {
   auth: InitalStateType;
-  setAuthenticated: (user: User) => void;
+  handleLogin: (user: User) => void;
+  handleLogout: () => void;
 };

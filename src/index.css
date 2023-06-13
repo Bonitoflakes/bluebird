@@ -75,6 +75,14 @@ html {
   padding: 0;
 }
 
+.p-0-25 {
+  padding: 0.25rem !important;
+}
+
+.p-0-5 {
+  padding: 0.5rem !important;
+}
+
 .p-0-75 {
   padding: 0.75rem !important;
 }
@@ -178,7 +186,6 @@ html {
 .orange {
   background-color: orange;
 }
-
 
 .w-100 {
   width: 100%;
