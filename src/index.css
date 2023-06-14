@@ -19,7 +19,7 @@ html {
   border-radius: 100px;
   border-color: gray;
   width: 100%;
-  padding-left: 1rem !important;
+  padding-left: 0.7rem !important;
 
   &:focus,
   &:hover {
@@ -48,7 +48,6 @@ html {
 
 .ant-menu {
   border: none !important;
-  /* background-color: green !important; */
 }
 
 .centered {
@@ -65,10 +64,6 @@ html {
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box;
-}
-
-.m-0 {
-  margin: 0 !important;
 }
 
 .p-0 {
@@ -89,6 +84,10 @@ html {
 
 .p-1 {
   padding: 1rem !important;
+}
+
+.m-0 {
+  margin: 0 !important;
 }
 
 .m-1 {
@@ -188,7 +187,11 @@ html {
 }
 
 .w-100 {
-  width: 100%;
+  width: 100% !important;
+}
+
+.h-100 {
+  height: 100% !important;
 }
 
 .tweet-actions--interactive {
