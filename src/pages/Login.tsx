@@ -1,10 +1,11 @@
-import { useAuth } from "../contexts/AuthContext";
-import { Button, Input, Modal, Typography } from "antd";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useConfig } from "../hooks/useToken";
-import { LogoIcon } from "../Icons/logo";
-import { AppleFilled, GoogleOutlined } from "@ant-design/icons";
 import { ChangeEvent, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Button, Form, Input, Modal, Typography } from "antd";
+import { AppleFilled, GoogleOutlined } from "@ant-design/icons";
+
+import { useConfig } from "../hooks/useToken";
+import { useAuth } from "../contexts/AuthContext";
+import { LogoIcon } from "../Icons/logo";
 
 import "./login.css";
 
@@ -19,19 +20,37 @@ const dummyUser = {
     "https://images.pexels.com/photos/16982012/pexels-photo-16982012/free-photo-of-sea-sunset-fashion-beach.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 };
 
+interface IUsername {
+  username: string;
+  status: "" | "error" | "success" | "warning" | "validating" | undefined;
+  help: string;
+}
+
+interface IStepOne {
+  username: IUsername;
+  handleUsername: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+interface IStepTwo {
+  handleAuth: () => void;
+  username: string;
+}
+
 export const Login = () => {
   const { handleLogin, auth } = useAuth();
-  const { token } = useConfig();
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(true);
-  const [userCreds, setUserCreds] = useState({
-    name: "",
-    password: "",
+  const [username, setUsername] = useState<IUsername>({
+    username: "",
+    status: "",
+    help: "",
   });
+
   const [step, setStep] = useState(1);
+  const [form] = Form.useForm<{ username: string; password: string }>();
 
   const handleCancel = () => {
     console.log("Clicked cancel button");
@@ -39,28 +58,12 @@ export const Login = () => {
     navigate("/");
   };
 
-  const handleValidateUser = () => {
-    // TODO: Validate whether the user is valid and present in DB, make a fetch req, update error state.
-    setStep(2);
-  };
-
-  const handleUserName = (e: ChangeEvent<HTMLInputElement>) => {
-    setUserCreds((prev) => {
-      return { ...prev, name: e.target.value };
-    });
-  };
-
-  const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    setUserCreds((prev) => {
-      return { ...prev, password: e.target.value };
-    });
-  };
-
   const handleAuth = () => {
     // TODO: Validate whether the password is valid, make a fetch req, update error state.
+
     // TODO: Update the auth context state based on this.
 
-    if (!auth.isAuthenticated) {
+    if (auth.isAuthenticated) {
       handleLogin(dummyUser);
       return navigate(location.state.from);
     }
@@ -68,156 +71,199 @@ export const Login = () => {
     return navigate("/");
   };
 
+  const onUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUsername({ ...username, username: e.target.value });
+  };
+
+  const validateUsername = async () => {
+    const value = username.username;
+
+    if (value === undefined || value === "") {
+      return setUsername({ ...username, status: "error", help: "Username is required" });
+    }
+
+    if (value.length < 6) {
+      return setUsername({ ...username, status: "error", help: "Username is too short" });
+    }
+
+    // make a call to DB.
+    const delay = new Promise((resolve) => setTimeout(resolve, 5000));
+    setUsername({ ...username, status: "validating" });
+    await delay;
+
+    // if user not found, return error
+    if (value !== "rishab.khivsara@gmail.com") {
+      return setUsername({ ...username, status: "error", help: "Username is invalid" });
+    }
+
+    setUsername({ ...username, status: "success", help: "" });
+    return setStep(2);
+  };
+
+  const onFinish = () => {
+    validateUsername().then(() => {
+      console.log("finished validating username....");
+    });
+  };
+
+  const onFinishFailed = (errorInfo: unknown) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <div>
-      <Modal
-        open={isOpen}
-        width={600}
-        style={{ height: "600px" }}
-        centered
-        footer={null}
-        onCancel={handleCancel}
-      >
-        <div className="flex column align-center" style={{ padding: "0 32px", height: "600px" }}>
-          <div>
-            <Link to="/">
-              <LogoIcon style={{ color: token.colorPrimary }} />
-            </Link>
-          </div>
+      <Modal open={isOpen} width={600} footer={null} onCancel={handleCancel}>
+        <div className="flex column align-center px-2 h-600">
+          <Logo />
 
-          {step === 1 && (
-            <div className="flex align-start column w-100" style={{ padding: "0 88px" }}>
-              <Title level={3} style={{ fontSize: "31px", fontWeight: "700", margin: "1rem 0" }}>
-                Sign in to Twitter
-              </Title>
+          <Form
+            form={form}
+            onFinish={onFinish}
+            name="login-form"
+            onFinishFailed={onFinishFailed}
+            className="w-full h-full px-5-5"
+          >
+            {step === 1 && <StepOne handleUsername={onUsernameChange} username={username} />}
 
-              <Button
-                icon={<GoogleOutlined />}
-                size="large"
-                block
-                shape="round"
-                style={{ margin: "12px 0" }}
-                type="primary"
-              >
-                Sign in with Google
-              </Button>
-
-              <Button
-                icon={<AppleFilled />}
-                size="large"
-                block
-                shape="round"
-                style={{ margin: "12px 0", fontWeight: "600" }}
-                type="primary"
-              >
-                Sign in with Apple
-              </Button>
-
-              <Line />
-
-              <Input
-                placeholder="Phone, email, or username"
-                style={{ margin: "12px 0" }}
-                size="large"
-                className="login-input"
-                value={userCreds.name}
-                onChange={handleUserName}
-              />
-
-              <Button
-                size="large"
-                block
-                shape="round"
-                style={{ margin: "12px 0", fontWeight: "600" }}
-                type="primary"
-                onClick={handleValidateUser}
-              >
-                Next
-              </Button>
-
-              <Button
-                style={{
-                  margin: "12px 0",
-                  background: token.colorBgLayout,
-                  color: token.colorPrimary,
-                  fontWeight: "600",
-                }}
-                type="default"
-                size="large"
-                block
-                shape="round"
-              >
-                Forgot Password
-              </Button>
-
-              <Text style={{ margin: "40px 0" }}>
-                Don't have an account? <Link to="/signup">Signup</Link>
-              </Text>
-            </div>
-          )}
-
-          {step === 2 && (
-            <div className="flex align-start column w-100 justify-between h-100">
-              <div className="w-100">
-                <Title level={3} style={{ fontSize: "31px", fontWeight: "700", margin: "1rem 0" }}>
-                  Sign in to Twitter
-                </Title>
-
-                <Input
-                  placeholder="Phone, email, or username"
-                  style={{ margin: "12px 0" }}
-                  size="large"
-                  className="login-input"
-                  value={userCreds.name}
-                  disabled
-                />
-
-                <Input.Password
-                  placeholder="Password"
-                  style={{ margin: "12px 0" }}
-                  size="large"
-                  className="password-input"
-                  value={userCreds.password}
-                  onChange={handlePassword}
-                />
-
-                <Text style={{ marginTop: "-10px" }}>
-                  <Link to="/signup">Forgot password?</Link>
-                </Text>
-              </div>
-
-              <div className="w-100">
-                <Button
-                  size="large"
-                  block
-                  shape="round"
-                  style={{ margin: "12px 0" }}
-                  type="primary"
-                  onClick={handleAuth}
-                >
-                  {auth.isAuthenticated ? "Logout" : "Login"}
-                </Button>
-
-                <Text style={{ margin: "40px 0" }}>
-                  Don't have an account? <Link to="/signup">Sign Up</Link>
-                </Text>
-              </div>
-            </div>
-          )}
+            {step === 2 && <StepTwo handleAuth={handleAuth} username={username.username} />}
+          </Form>
         </div>
       </Modal>
     </div>
   );
 };
 
+export const StepOne = ({ username, handleUsername }: IStepOne) => {
+  const { token } = useConfig();
+
+  return (
+    <>
+      <div className="flex align-start column w-full">
+        <Title level={3} className="text-2 my-1 weight-600">
+          Sign in to Twitter
+        </Title>
+
+        <Button icon={<GoogleOutlined />} size="large" block shape="round" className="my-1" type="primary">
+          Sign in with Google
+        </Button>
+
+        <Button
+          icon={<AppleFilled />}
+          size="large"
+          block
+          shape="round"
+          className="my-1 weight-600"
+          type="primary"
+        >
+          Sign in with Apple
+        </Button>
+
+        <Line />
+
+        <Form.Item
+          required
+          name="username"
+          className="w-full m-0"
+          validateStatus={username.status}
+          help={username.help}
+          hasFeedback
+        >
+          <Input
+            placeholder="Phone, email, or username"
+            className="my-1 login-input"
+            name="username"
+            size="large"
+            value={username.username}
+            onChange={handleUsername}
+          />
+        </Form.Item>
+
+        <Button size="large" block shape="round" className="my-1 weight-600" type="primary" htmlType="submit">
+          Next
+        </Button>
+
+        <Button
+          style={{
+            background: token.colorBgLayout,
+            color: token.colorPrimary,
+          }}
+          className="my-1 weight-600"
+          type="default"
+          size="large"
+          block
+          shape="round"
+        >
+          Forgot Password
+        </Button>
+
+        <Text className="my-2-5">
+          Don't have an account? <Link to="/signup">Signup</Link>
+        </Text>
+      </div>
+    </>
+  );
+};
+
+export const StepTwo = ({ handleAuth, username }: IStepTwo) => {
+  return (
+    <>
+      <div className="flex align-start column w-full justify-between h-full">
+        <div className="w-full">
+          <Title level={3} className="weight-700 my-1 text-2">
+            Sign in to Twitter
+          </Title>
+
+          <Input
+            placeholder="Phone, email, or username"
+            size="large"
+            className="login-input my-0-75"
+            disabled
+            value={username}
+          />
+
+          <Form.Item name="password" rules={[{ required: true, message: "Please input your Password!" }]}>
+            <Input.Password placeholder="Password" size="large" className="password-input my-0-75" />
+          </Form.Item>
+
+          <Text style={{ marginTop: "-10px" }}>
+            <Link to="/signup">Forgot password?</Link>
+          </Text>
+        </div>
+
+        <div className="w-full">
+          <Button size="large" block shape="round" className="my-0-75" type="primary" onClick={handleAuth}>
+            Login
+          </Button>
+
+          <Text className="my-2-5">
+            Don't have an account? <Link to="/signup">Sign Up</Link>
+          </Text>
+        </div>
+      </div>
+    </>
+  );
+};
+
 export const Line = () => {
   return (
-    <div className="flex align-center w-100">
+    <div className="flex align-center w-full">
       <div style={{ margin: "8px 0", height: "1px", background: "gray", width: "100px", flex: "1" }}></div>
       <p className="m-0" style={{ padding: "0 0.25rem", fontSize: "17px" }}>
         or
       </p>
       <div style={{ margin: "8px 0", height: "1px", background: "gray", width: "100px", flex: "1" }}></div>
+    </div>
+  );
+};
+
+export const Logo = () => {
+  const { token } = useConfig();
+
+  return (
+    <div>
+      <Link to="/">
+        <LogoIcon style={{ color: token.colorPrimary }} />
+      </Link>
     </div>
   );
 };

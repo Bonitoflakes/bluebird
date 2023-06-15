@@ -10,10 +10,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-html {
-  /* color-scheme: light dark; */
-}
-
 /* Input Field */
 .ant-input {
   border-radius: 100px;
@@ -86,12 +82,32 @@ html {
   padding: 1rem !important;
 }
 
+.px-2 {
+  padding: 0 2rem !important;
+}
+
+.px-5-5 {
+  padding: 0 5.5rem !important;
+}
+
 .m-0 {
   margin: 0 !important;
 }
 
 .m-1 {
   margin: 1rem !important;
+}
+
+.my-0-75 {
+  margin: 0.75rem 0 !important;
+}
+
+.my-1 {
+  margin: 1rem 0 !important;
+}
+
+.my-2-5 {
+  margin: 2.5rem 0 !important;
 }
 
 .gap-0 {
@@ -186,12 +202,32 @@ html {
   background-color: orange;
 }
 
-.w-100 {
+.w-full {
   width: 100% !important;
 }
 
-.h-100 {
+.h-full {
   height: 100% !important;
+}
+
+.h-600 {
+  height: 600px !important;
+}
+
+.weight-600 {
+  font-weight: 600 !important;
+}
+
+.weight-700 {
+  font-weight: 700 !important;
+}
+
+.weight-800 {
+  font-weight: 800 !important;
+}
+
+.text-2 {
+  font-size: 2rem !important;
 }
 
 .tweet-actions--interactive {

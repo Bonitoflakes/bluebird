@@ -45,7 +45,7 @@ export const Tweet = () => {
 export const Line1 = () => {
   return (
     <>
-      <div className="flex align-center justify-between  w-100">
+      <div className="flex align-center justify-between  w-full">
         <div className="flex gap-0-25">
           <Title level={5} className="m-0" style={{ fontSize: "13px", fontWeight: "800" }}>
             Harsh Mohite
@@ -115,7 +115,7 @@ const userInteractionsList = [
 export const Line3 = () => {
   return (
     <>
-      <div className="flex  w-100 justify-between m-0-75" style={{ marginLeft: "-6px" }}>
+      <div className="flex  w-full justify-between m-0-75" style={{ marginLeft: "-6px" }}>
         {userInteractionsList.map(({ shape, count, name }) => {
           return (
             <div className={`action--${name}`}>
