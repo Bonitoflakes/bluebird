@@ -1,11 +1,17 @@
 .logo {
-  margin: 1rem 20px 1rem 20px !important;
+  margin: 1rem 0;
+  /* margin: 1rem 20px 1rem 20px !important; */
   padding: 12px !important;
 }
 
 .settings {
-  margin: 1rem 20px 1rem 11px !important;
-  padding: 12px !important;
+  /* margin: 1rem 20px 1rem 11px !important; */
+  margin: 1rem 0;
+  border-radius: 50px !important;
+}
+
+.settings:hover {
+  background-color: rgba(64, 64, 64, 0.4) !important;
 }
 
 .sidebar {

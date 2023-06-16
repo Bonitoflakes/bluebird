@@ -1,9 +1,9 @@
 import { Menu } from "antd";
-import { SideBarLinks } from "../../constants/Sidebarlinks";
 import { Link } from "react-router-dom";
 
-import { useConfig } from "../../hooks/useToken";
+import { useConfig } from "@hooks/useConfig";
 
+import { SideBarLinks } from "../../constants/Sidebarlinks";
 import styles from "./styles/SideNavbar.module.css";
 
 export const SideNavBar = ({
@@ -15,7 +15,7 @@ export const SideNavBar = ({
   activeMenu: number;
   isCollapsed: boolean;
 }) => {
-  const { token } = useConfig();
+  const token = useConfig();
 
   function renderMenuItem({ icon, label, id }: { icon: string; label: string; id: number }) {
     const isActive = activeMenu === id;

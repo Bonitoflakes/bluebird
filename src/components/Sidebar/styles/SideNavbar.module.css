@@ -4,7 +4,8 @@
   width: fit-content !important;
   font-size: 20px !important;
   padding: 12px !important;
-  margin: 1rem 20px 1rem 20px !important;
+  margin: 1rem 0 !important;
+  /* margin: 1rem 20px 1rem 20px !important; */
   text-transform: capitalize !important;
   border-radius: 9999px !important;
 }

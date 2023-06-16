@@ -8,6 +8,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --gray: rgb(113, 118, 123);
+  --gray-dark: rgb(83, 100, 113);
+  --white: #ffffff;
+  --black: #000000;
+  --primary: rgb(29, 156, 240);
+  --pink: rgb(228, 110, 130);
+  --green: rgb(61, 234, 130);
 }
 
 /* Input Field */
@@ -19,7 +27,7 @@
 
   &:focus,
   &:hover {
-    border-color: rgb(29, 156, 240);
+    border-color: var(--primary);
   }
 
   &::placeholder {
@@ -82,6 +90,30 @@
   padding: 1rem !important;
 }
 
+.p-1-25 {
+  padding: 1.25rem !important;
+}
+
+.p-1-5 {
+  padding: 1.5rem !important;
+}
+
+.p-1-75 {
+  padding: 1.75rem !important;
+}
+
+.p-2 {
+  padding: 2rem !important;
+}
+
+.py-1 {
+  padding: 1rem 0 !important;
+}
+
+.py-2 {
+  padding: 2rem 0rem !important;
+}
+
 .px-2 {
   padding: 0 2rem !important;
 }
@@ -131,23 +163,23 @@
 }
 
 .border-1 {
-  border: 1px solid #536471;
+  border: 1px solid var(--gray-dark);
 }
 
 .border-1-left {
-  border-left: 1px solid #536471;
+  border-left: 1px solid var(--gray-dark);
 }
 
 .border-1-right {
-  border-right: 1px solid #536471;
+  border-right: 1px solid var(--gray-dark);
 }
 
 .border-1-top {
-  border-top: 1px solid #536471;
+  border-top: 1px solid var(--gray-dark);
 }
 
 .border-1-bottom {
-  border-bottom: 1px solid #536471;
+  border-bottom: 1px solid var(--gray-dark);
 }
 
 .relative {
@@ -202,12 +234,20 @@
   background-color: orange;
 }
 
+.color-gray {
+  color: var(--gray);
+}
+
 .w-full {
   width: 100% !important;
 }
 
 .h-full {
   height: 100% !important;
+}
+
+.h-42 {
+  height: 42px !important;
 }
 
 .h-600 {
@@ -237,29 +277,29 @@
 .action--like:hover .anticon,
 .action--like:hover .action--like-text {
   transition: 0.3s ease color;
-  color: rgb(228, 110, 130) !important;
+  color: var(--pink) !important;
 }
 
 .action--retweet:hover .anticon,
 .action--retweet:hover .action--retweet-text {
   transition: 0.3s ease color;
-  color: rgb(61, 234, 130) !important;
+  color: var(--green) !important;
 }
 
 .action--view:hover .anticon,
 .action--view:hover .action--view-text {
   transition: 0.3s ease color;
-  color: rgb(47, 115, 241) !important;
+  color: var(--primary) !important;
 }
 
 .action--comment:hover .anticon,
 .action--comment:hover .action--comment-text {
   transition: 0.3s ease color;
-  color: rgb(47, 115, 241) !important;
+  color: var(--primary) !important;
 }
 
 .action--share:hover .anticon,
 .action--share:hover .action--share-text {
   transition: 0.3s ease color;
-  color: rgb(47, 115, 241) !important;
+  color: var(--primary) !important;
 }

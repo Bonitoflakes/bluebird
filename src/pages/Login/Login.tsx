@@ -3,9 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button, Form, Input, Modal, Typography } from "antd";
 import { AppleFilled, GoogleOutlined } from "@ant-design/icons";
 
-import { useConfig } from "../hooks/useToken";
-import { useAuth } from "../contexts/AuthContext";
-import { LogoIcon } from "../Icons/logo";
+import { useConfig } from "@hooks/useConfig";
+import { useAuth } from "@contexts/AuthContext";
+import { Logo } from "@icons/logo";
 
 import "./login.css";
 
@@ -63,7 +63,7 @@ export const Login = () => {
 
     // TODO: Update the auth context state based on this.
 
-    if (auth.isAuthenticated) {
+    if (!auth.isAuthenticated) {
       handleLogin(dummyUser);
       return navigate(location.state.from);
     }
@@ -112,8 +112,8 @@ export const Login = () => {
 
   return (
     <div>
-      <Modal open={isOpen} width={600} footer={null} onCancel={handleCancel}>
-        <div className="flex column align-center px-2 h-600">
+      <Modal open={isOpen} width={600} footer={null} onCancel={handleCancel} centered>
+        <div className="flex p-2 column align-center h-601">
           <Logo />
 
           <Form
@@ -134,12 +134,12 @@ export const Login = () => {
 };
 
 export const StepOne = ({ username, handleUsername }: IStepOne) => {
-  const { token } = useConfig();
+  const token = useConfig();
 
   return (
     <>
-      <div className="flex align-start column w-full">
-        <Title level={3} className="text-2 my-1 weight-600">
+      <div className="flex w-full align-start column">
+        <Title level={3} className="my-1 text-2 weight-600">
           Sign in to Twitter
         </Title>
 
@@ -207,9 +207,9 @@ export const StepOne = ({ username, handleUsername }: IStepOne) => {
 export const StepTwo = ({ handleAuth, username }: IStepTwo) => {
   return (
     <>
-      <div className="flex align-start column w-full justify-between h-full">
+      <div className="flex justify-between w-full h-full align-start column">
         <div className="w-full">
-          <Title level={3} className="weight-700 my-1 text-2">
+          <Title level={3} className="my-1 weight-700 text-2">
             Sign in to Twitter
           </Title>
 
@@ -246,24 +246,12 @@ export const StepTwo = ({ handleAuth, username }: IStepTwo) => {
 
 export const Line = () => {
   return (
-    <div className="flex align-center w-full">
+    <div className="flex w-full align-center">
       <div style={{ margin: "8px 0", height: "1px", background: "gray", width: "100px", flex: "1" }}></div>
       <p className="m-0" style={{ padding: "0 0.25rem", fontSize: "17px" }}>
         or
       </p>
       <div style={{ margin: "8px 0", height: "1px", background: "gray", width: "100px", flex: "1" }}></div>
-    </div>
-  );
-};
-
-export const Logo = () => {
-  const { token } = useConfig();
-
-  return (
-    <div>
-      <Link to="/">
-        <LogoIcon style={{ color: token.colorPrimary }} />
-      </Link>
     </div>
   );
 };

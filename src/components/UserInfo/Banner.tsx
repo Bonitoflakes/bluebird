@@ -1,19 +1,19 @@
-import banner from "../../assets/bannerbg.png";
-import avatar from "../../assets/Avatar.png";
-import { ReactComponent as dots } from "../../assets/dots.svg";
-
 import { Avatar, Button, Image, Space } from "antd";
+import Icon from "@ant-design/icons";
+
+import banner from "@assets/bannerbg.png";
+import avatar from "@assets/Avatar.png";
+import { ReactComponent as dots } from "@assets/dots.svg";
 
 // Custom Icons
-import { NotifyIcon } from "../../Icons/notify";
-import { MsgIcon } from "../../Icons/msg";
+import { NotifyIcon } from "@icons/notify";
+import { MsgIcon } from "@icons/msg";
 
-import Icon from "@ant-design/icons";
 
 export const Banner = () => {
   return (
     <>
-      <div className="gap-0 relative">
+      <div className="relative gap-0">
         <Image src={banner} alt="banner" preview width="100%" />
         <Avatar
           src={avatar}

@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Layout } from "antd";
+import { Grid, Layout } from "antd";
 
 import { SideBarLinks } from "../constants/Sidebarlinks";
-
 import { AppRoutes } from "../routes/Approutes";
-import { SidebarLeft } from "../components/Sidebar/SidebarLeft";
-import { SidebarRight } from "../components/Sidebar/SidebarRight";
-import { useConfig } from "../hooks/useToken";
 
-const { Content } = Layout;
+import { SidebarLeft, SidebarRight } from "@components/Sidebar";
+
+import { useConfig } from "@hooks/useConfig";
 
 export const AppLayout = () => {
-  const { pathname } = useLocation();
-  const { token } = useConfig();
+  const location = useLocation();
+  const token = useConfig();
+  const { lg } = Grid.useBreakpoint();
 
   const [activeMenu, setActiveMenu] = useState(1);
+
+  const { pathname } = location;
 
   useEffect(() => {
     const stripPath = pathname.slice(1);
@@ -41,12 +42,12 @@ export const AppLayout = () => {
         <SidebarLeft activeMenu={activeMenu} />
 
         <Layout>
-          <Content className="border-1-left border-1-right">
+          <Layout.Content className="border-1-left border-1-right">
             <AppRoutes />
-          </Content>
+          </Layout.Content>
         </Layout>
 
-        <SidebarRight />
+        {lg ? <SidebarRight /> : null}
         {/*  */}
       </Layout>
     </div>

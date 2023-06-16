@@ -1,4 +1,4 @@
-import { initialState } from "../contexts/AuthContext";
+import { initialState } from "@contexts/AuthContext";
 
 type InitalStateType = typeof initialState;
 

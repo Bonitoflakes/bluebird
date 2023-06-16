@@ -1,9 +1,9 @@
-import home from "../assets/home.svg";
-import like from "../assets/like.svg";
-import messages from "../assets/messages.svg";
-import post from "../assets/post.svg";
-import profile from "../assets/profile.svg";
-import search from "../assets/search.svg";
+import home from "@assets/home.svg";
+import like from "@assets/like.svg";
+import messages from "@assets/messages.svg";
+import post from "@assets/post.svg";
+import profile from "@assets/profile.svg";
+import search from "@assets/search.svg";
 
 export const SideBarLinks = [
   {

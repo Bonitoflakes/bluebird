@@ -52,7 +52,7 @@
 //   activeMenu: number;
 //   isCollapsed: boolean;
 // }) => {
-//   const { token } = useConfig();
+//   const token = useConfig();
 
 //   // function renderMenuItem({ icon, label, id }: { icon: string; label: string; id: number }) {
 //   //   const isActive = activeMenu === id;
