@@ -3,5 +3,6 @@
 - [ ] fetch from API.
 - [x] Complete Feed page.
 - [x] Login UI
-- [ ] Login UI validation
-- [ ] Login UI Refactor
+- [?] Login UI validation
+- [x] Login UI Refactor
+- [?] Formik vs ANTD Forms
