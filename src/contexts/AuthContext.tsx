@@ -20,6 +20,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const handleLogin = (user: User) => {
     console.log("Setting auth", user);
+
     setAuth((prev) => {
       return { isAuthenticated: !prev.isAuthenticated, user };
     });

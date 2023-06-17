@@ -5,15 +5,15 @@ import { Button, Modal, Typography } from "antd";
 import { useAuth } from "@contexts/AuthContext";
 
 import { Logo } from "@icons/logo";
-import { useConfig } from "@hooks/useConfig";
 
 import "./Logout.css";
+import { useConfig } from "@hooks/useConfig";
 
 const { Title, Paragraph } = Typography;
 
 export const Logout = () => {
   const { handleLogout } = useAuth();
-  const token = useConfig();
+  const { token } = useConfig();
 
   const location = useLocation();
   const navigate = useNavigate();

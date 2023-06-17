@@ -1,15 +1,14 @@
 import { Layout } from "antd";
 
 import { useCustomTheme } from "@contexts/CustomThemeContext";
-import { useConfig } from "@hooks/useConfig";
 
 import { SidebarColumn } from "./SidebarColumn";
 import styles from "./styles/Sidebar.module.css";
+import { useConfig } from "@hooks/useConfig";
 
 export const SidebarRight = () => {
-  const token = useConfig();
   const { darkMode } = useCustomTheme();
-
+  const { token } = useConfig();
   return (
     <Layout.Sider
       className={styles.sidebar}

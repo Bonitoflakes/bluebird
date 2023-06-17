@@ -1,257 +1,215 @@
-import { ChangeEvent, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Button, Form, Input, Modal, Typography } from "antd";
-import { AppleFilled, GoogleOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Form, Modal } from "antd";
 
-import { useConfig } from "@hooks/useConfig";
 import { useAuth } from "@contexts/AuthContext";
 import { Logo } from "@icons/logo";
+import { API_ROUTES } from "@constants/Route_Constants";
 
 import "./login.css";
+import { StepOne } from "./StepOne";
+import { StepTwo } from "./StepTwo";
 
-const { Title, Text } = Typography;
-
-const dummyUser = {
-  id: "121",
-  name: "dummy",
-  email: "dummmy@gmail.com",
-  bio: "Sup ...",
-  avatar:
-    "https://images.pexels.com/photos/16982012/pexels-photo-16982012/free-photo-of-sea-sunset-fashion-beach.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-};
-
-interface IUsername {
-  username: string;
-  status: "" | "error" | "success" | "warning" | "validating" | undefined;
-  help: string;
-}
-
-interface IStepOne {
-  username: IUsername;
-  handleUsername: (e: ChangeEvent<HTMLInputElement>) => void;
-}
-
-interface IStepTwo {
-  handleAuth: () => void;
-  username: string;
+export interface ICreds {
+  username: {
+    value: string;
+    status: "" | "error" | "success" | "warning" | "validating" | undefined;
+    help: string | null;
+  };
+  password: {
+    value: string;
+    status: "" | "error" | "success" | "warning" | "validating" | undefined;
+    help: string | null;
+  };
 }
 
 export const Login = () => {
-  const { handleLogin, auth } = useAuth();
+  const { handleLogin } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(true);
-  const [username, setUsername] = useState<IUsername>({
-    username: "",
-    status: "",
-    help: "",
+  const [step, setStep] = useState(1);
+  const [disabledSave, setDisabledSave] = useState(true);
+
+  const [creds, setCreds] = useState<ICreds>({
+    username: {
+      value: "",
+      status: "",
+      help: null,
+    },
+    password: {
+      value: "",
+      status: "",
+      help: null,
+    },
   });
 
-  const [step, setStep] = useState(1);
   const [form] = Form.useForm<{ username: string; password: string }>();
 
   const handleCancel = () => {
     console.log("Clicked cancel button");
     setIsOpen(false);
-    navigate("/");
+    navigate(-1);
   };
 
-  const handleAuth = () => {
-    // TODO: Validate whether the password is valid, make a fetch req, update error state.
+  const handleAuth = async (username: string, password: string) => {
+    try {
+      setDisabledSave((p) => !p);
+      setCreds((prev) => ({
+        ...prev,
+        password: {
+          ...prev.password,
+          status: "validating",
+          help: null,
+        },
+      }));
 
-    // TODO: Update the auth context state based on this.
+      const { data } = await axios.post(API_ROUTES.LOGIN, { username, password });
+      const delay = new Promise((resolve) => setTimeout(resolve, 2000));
+      await delay;
 
-    if (!auth.isAuthenticated) {
-      handleLogin(dummyUser);
-      return navigate(location.state.from);
+      if (!data) {
+        setDisabledSave((p) => !p);
+        setCreds((prev) => ({
+          ...prev,
+          password: {
+            ...prev.password,
+            status: "error",
+            help: "Username or Password mismatch",
+          },
+        }));
+      }
+
+      handleLogin(data);
+      return navigate(location.state?.from || "/");
+    } catch (error) {
+      console.error(error);
+      return setCreds((prev) => ({
+        ...prev,
+        password: { ...prev.password, status: "error", help: "Something went wrong" },
+      }));
     }
-
-    return navigate("/");
   };
 
-  const onUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setUsername({ ...username, username: e.target.value });
-  };
+  const validateUsername = async (value: string) => {
+    setCreds((prev) => ({
+      ...prev,
+      username: { ...prev.username, value },
+    }));
 
-  const validateUsername = async () => {
-    const value = username.username;
-
-    if (value === undefined || value === "") {
-      return setUsername({ ...username, status: "error", help: "Username is required" });
+    if (!value) {
+      return setCreds((prev) => ({
+        ...prev,
+        username: {
+          ...prev.username,
+          status: "error",
+          help: "Username is required",
+        },
+      }));
     }
 
     if (value.length < 6) {
-      return setUsername({ ...username, status: "error", help: "Username is too short" });
+      return setCreds((prev) => ({
+        ...prev,
+        username: {
+          ...prev.username,
+          status: "warning",
+          help: "Username is too short",
+        },
+      }));
     }
 
-    // make a call to DB.
-    const delay = new Promise((resolve) => setTimeout(resolve, 5000));
-    setUsername({ ...username, status: "validating" });
-    await delay;
+    setCreds((prev) => ({
+      ...prev,
+      username: { ...prev.username, status: "validating", help: null },
+    }));
 
-    // if user not found, return error
-    if (value !== "rishab.khivsara@gmail.com") {
-      return setUsername({ ...username, status: "error", help: "Username is invalid" });
+    try {
+      const { data: isValidUser } = await axios.post(API_ROUTES.VALIDATE_USER, { username: value });
+
+      if (!isValidUser) {
+        return setCreds((prev) => ({
+          ...prev,
+          username: {
+            ...prev.username,
+            status: "error",
+            help: "Username is invalid",
+          },
+        }));
+      }
+
+      setCreds((prev) => ({
+        ...prev,
+        username: { ...prev.username, status: "success", help: null },
+      }));
+
+      return setStep(2);
+    } catch (error) {
+      console.log(error);
+      return setCreds((prev) => ({
+        ...prev,
+        username: { ...prev.username, status: "error", help: "Something went wrong" },
+      }));
     }
-
-    setUsername({ ...username, status: "success", help: "" });
-    return setStep(2);
   };
 
-  const onFinish = () => {
-    validateUsername().then(() => {
-      console.log("finished validating username....");
-    });
+  const handleFormChange = () => {
+    const hasErrors = form.getFieldsError().some(({ errors }) => errors.length);
+    setDisabledSave(hasErrors);
+  };
+
+  const onFinish = async (values: any) => {
+    console.log(values);
+
+    const username = values.username?.trim();
+    const password = values.password;
+
+    if (step === 1) {
+      await validateUsername(username).then(() => {
+        console.log("finished validating username....");
+      });
+    }
+
+    if (step === 2) {
+      await handleAuth(creds.username.value, password).then(() => {
+        console.log("Finishing Login.... ");
+      });
+    }
   };
 
   const onFinishFailed = (errorInfo: unknown) => {
-    console.log("Failed:", errorInfo);
+    console.log("Finish Failed :", errorInfo);
   };
 
   return (
     <div>
       <Modal open={isOpen} width={600} footer={null} onCancel={handleCancel} centered>
-        <div className="flex p-2 column align-center h-601">
+        <div className="flex p-2 column align-center">
           <Logo />
 
           <Form
             form={form}
-            onFinish={onFinish}
             name="login-form"
+            className="w-full h-600"
+            onFieldsChange={handleFormChange}
+            onFinish={onFinish}
             onFinishFailed={onFinishFailed}
-            className="w-full h-full px-5-5"
           >
-            {step === 1 && <StepOne handleUsername={onUsernameChange} username={username} />}
+            {step === 1 && <StepOne username={creds.username} disabledSave={disabledSave} />}
 
-            {step === 2 && <StepTwo handleAuth={handleAuth} username={username.username} />}
+            {step === 2 && (
+              <StepTwo
+                username={creds.username.value}
+                password={creds.password}
+                disabledSave={disabledSave}
+              />
+            )}
           </Form>
         </div>
       </Modal>
-    </div>
-  );
-};
-
-export const StepOne = ({ username, handleUsername }: IStepOne) => {
-  const token = useConfig();
-
-  return (
-    <>
-      <div className="flex w-full align-start column">
-        <Title level={3} className="my-1 text-2 weight-600">
-          Sign in to Twitter
-        </Title>
-
-        <Button icon={<GoogleOutlined />} size="large" block shape="round" className="my-1" type="primary">
-          Sign in with Google
-        </Button>
-
-        <Button
-          icon={<AppleFilled />}
-          size="large"
-          block
-          shape="round"
-          className="my-1 weight-600"
-          type="primary"
-        >
-          Sign in with Apple
-        </Button>
-
-        <Line />
-
-        <Form.Item
-          required
-          name="username"
-          className="w-full m-0"
-          validateStatus={username.status}
-          help={username.help}
-          hasFeedback
-        >
-          <Input
-            placeholder="Phone, email, or username"
-            className="my-1 login-input"
-            name="username"
-            size="large"
-            value={username.username}
-            onChange={handleUsername}
-          />
-        </Form.Item>
-
-        <Button size="large" block shape="round" className="my-1 weight-600" type="primary" htmlType="submit">
-          Next
-        </Button>
-
-        <Button
-          style={{
-            background: token.colorBgLayout,
-            color: token.colorPrimary,
-          }}
-          className="my-1 weight-600"
-          type="default"
-          size="large"
-          block
-          shape="round"
-        >
-          Forgot Password
-        </Button>
-
-        <Text className="my-2-5">
-          Don't have an account? <Link to="/signup">Signup</Link>
-        </Text>
-      </div>
-    </>
-  );
-};
-
-export const StepTwo = ({ handleAuth, username }: IStepTwo) => {
-  return (
-    <>
-      <div className="flex justify-between w-full h-full align-start column">
-        <div className="w-full">
-          <Title level={3} className="my-1 weight-700 text-2">
-            Sign in to Twitter
-          </Title>
-
-          <Input
-            placeholder="Phone, email, or username"
-            size="large"
-            className="login-input my-0-75"
-            disabled
-            value={username}
-          />
-
-          <Form.Item name="password" rules={[{ required: true, message: "Please input your Password!" }]}>
-            <Input.Password placeholder="Password" size="large" className="password-input my-0-75" />
-          </Form.Item>
-
-          <Text style={{ marginTop: "-10px" }}>
-            <Link to="/signup">Forgot password?</Link>
-          </Text>
-        </div>
-
-        <div className="w-full">
-          <Button size="large" block shape="round" className="my-0-75" type="primary" onClick={handleAuth}>
-            Login
-          </Button>
-
-          <Text className="my-2-5">
-            Don't have an account? <Link to="/signup">Sign Up</Link>
-          </Text>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export const Line = () => {
-  return (
-    <div className="flex w-full align-center">
-      <div style={{ margin: "8px 0", height: "1px", background: "gray", width: "100px", flex: "1" }}></div>
-      <p className="m-0" style={{ padding: "0 0.25rem", fontSize: "17px" }}>
-        or
-      </p>
-      <div style={{ margin: "8px 0", height: "1px", background: "gray", width: "100px", flex: "1" }}></div>
     </div>
   );
 };

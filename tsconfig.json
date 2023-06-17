@@ -31,7 +31,8 @@
       "@pages/*": ["./src/pages/*"],
       "@types/*": ["./src/types/*"],
       "@theme/*": ["./src/theme/*"],
-      "@icons/*": ["./src/icons/*"]
+      "@icons/*": ["./src/icons/*"],
+      "@constants/*": ["./src/constants/*"]
     }
   },
   "include": ["src"],

@@ -66,7 +66,7 @@ export const Line1 = () => {
 };
 
 export const Line2 = () => {
-  const token = useConfig();
+  const { token } = useConfig();
   return (
     <>
       <Space style={{ marginRight: "2rem", marginBottom: "1rem" }}>

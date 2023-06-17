@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Modal, Switch, Typography } from "antd";
+import { Button, Modal, Switch, Typography } from "antd";
 
 import { Logo } from "@icons/logo";
 import { useCustomTheme } from "@contexts/CustomThemeContext";
@@ -10,7 +10,7 @@ const { Title, Paragraph } = Typography;
 
 export const Settings = () => {
   const { darkMode, toggleDarkMode } = useCustomTheme();
-  const token = useConfig();
+  const { token } = useConfig();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -42,9 +42,16 @@ export const Settings = () => {
           <Title level={4} className="weight-700" style={{ color: token.colorPrimaryText }}>
             Settings
           </Title>
+
           <div className="flex justify-between w-full">
             <Paragraph className="color-gray">Toggle DarkMode</Paragraph>
             <Switch checked={darkMode} onChange={toggleDarkMode} />
+          </div>
+
+          <div className="flex justify-between w-full">
+            <Button className="mt-1 color-gray" type="primary" block onClick={() => navigate("/logout")}>
+              Logout
+            </Button>
           </div>
         </div>
       </div>

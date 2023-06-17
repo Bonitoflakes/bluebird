@@ -19,7 +19,7 @@ const LogoSvg = () => {
 const LogoIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={LogoSvg} {...props} />;
 
 export const Logo = ({ size = 2.5 }: { size?: number }) => {
-  const token = useConfig();
+  const { token } = useConfig();
 
   return (
     <Link to="/">
