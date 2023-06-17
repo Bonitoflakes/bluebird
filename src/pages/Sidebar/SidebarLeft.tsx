@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useCustomTheme } from "@contexts/CustomThemeContext";
-import { Logo } from "@icons/Logo";
+import { Logo } from "../../icons/Logo";
 
 import { SideNavBar } from "./SideNavbar";
 import styles from "./styles/SidebarLeft.module.css";

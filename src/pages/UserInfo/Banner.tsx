@@ -6,9 +6,8 @@ import avatar from "@assets/Avatar.png";
 import { ReactComponent as dots } from "@assets/dots.svg";
 
 // Custom Icons
-import { NotifyIcon } from "@icons/Notify";
-import { MsgIcon } from "@icons/Msg";
-
+import { NotifyIcon } from "../../icons/Notify";
+import { MsgIcon } from "../../icons/Msg";
 
 export const Banner = () => {
   return (
