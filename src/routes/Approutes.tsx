@@ -1,12 +1,13 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Typography } from "antd";
 
-import { ProtectedRoute } from "@components/HOC/ProtectedRoute";
+import { ProtectedRoute } from "../components/HOC/ProtectedRoute";
 
-import { Profile } from "@pages/Profile";
-import { Login } from "@pages/Login";
-import { Logout } from "@pages/Logout";
-import { Settings } from "@pages/Settings";
+import { Profile } from "../pages/Profile";
+import { Login } from "../components/Login";
+import { Logout } from "../components/Logout";
+import { Settings } from "../components/Settings";
+import { Home } from "@pages/Home/Home";
 
 // import { ConfigCheck } from "../theme/Configchecker";
 
@@ -17,7 +18,7 @@ export const AppRoutes = () => {
     <>
       {/* <ConfigCheck /> */}
       <Routes>
-        <Route path="/" element={<Text>Home</Text>} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />

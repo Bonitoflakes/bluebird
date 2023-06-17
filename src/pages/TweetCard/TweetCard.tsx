@@ -5,7 +5,7 @@ import Icon, {
   RetweetOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Space, Tooltip, Typography } from "antd";
+import { Avatar, Button, Space, Tooltip, Typography, Image } from "antd";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as dots } from "@assets/dots.svg";
@@ -15,7 +15,7 @@ const { Title, Text } = Typography;
 
 export const TweetCard = () => {
   return (
-    <div className="p-1 border-1-top border-1-bottom">
+    <div className="p-1 border-1-bottom">
       {/* <ReTweeted /> */}
       <Tweet />
     </div>
@@ -78,6 +78,13 @@ export const Line2 = () => {
           you ❤️
           <br />
           <br />
+          <div style={{ width: "500px", height: "500px", marginBottom: "1rem" }}>
+            <img
+              src="https://pbs.twimg.com/media/FyvtTxUWAAEe2bY?format=jpg&name=large"
+              className="reset-img"
+              style={{ borderRadius: "20px" }}
+            />
+          </div>
           <a>https://d1t6fjrywdb.typeform.com/to/qLuXDLvr</a>
         </Text>
       </Space>

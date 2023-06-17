@@ -5,7 +5,7 @@ import { Button, Grid, Layout, Space, Typography } from "antd";
 import { SideBarLinks } from "../constants/Sidebarlinks";
 import { AppRoutes } from "../routes/Approutes";
 
-import { SidebarLeft, SidebarRight } from "@components/Sidebar";
+import { SidebarLeft, SidebarRight } from "../pages/Sidebar";
 
 import { useAuth } from "@contexts/AuthContext";
 import { useConfig } from "@hooks/useConfig";
