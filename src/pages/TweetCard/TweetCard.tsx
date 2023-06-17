@@ -5,7 +5,7 @@ import Icon, {
   RetweetOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Space, Tooltip, Typography } from "antd";
+import { Avatar, Button, Grid, Space, Tooltip, Typography } from "antd";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as dots } from "@assets/dots.svg";
@@ -67,6 +67,11 @@ export const Line1 = () => {
 
 export const Line2 = () => {
   const { token } = useConfig();
+  const { md } = Grid.useBreakpoint();
+
+  console.log(md, "md");
+  const width = md ? "500px" : "300px";
+
   return (
     <>
       <Space style={{ marginRight: "2rem", marginBottom: "1rem" }}>
@@ -74,11 +79,11 @@ export const Line2 = () => {
           We know you're busy and there's a lot to learn out there.
           <br />
           <br />
-          Let us know what content you're interested in learning and we'll make sure <br /> to create it for
-          you ❤️
+          Let us know what content you're interested in learning and we'll make sure
+          to create it for you ❤️
           <br />
           <br />
-          <div style={{ width: "500px", height: "500px", marginBottom: "1rem" }}>
+          <div style={{ width: width, height: width, marginBottom: "1rem" }}>
             <img
               src="https://pbs.twimg.com/media/FyvtTxUWAAEe2bY?format=jpg&name=large"
               className="reset-img"
@@ -101,17 +106,17 @@ const userInteractionsList = [
   {
     name: "retweet",
     shape: <RetweetOutlined />,
-    count: 23,
+    count: 0,
   },
   {
     name: "like",
     shape: <HeartOutlined />,
-    count: 23,
+    count: 323,
   },
   {
     name: "view",
     shape: <AlignCenterOutlined rotate={90} />,
-    count: 23,
+    count: 2312,
   },
   {
     name: "share",

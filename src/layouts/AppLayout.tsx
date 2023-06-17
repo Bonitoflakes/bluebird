@@ -15,7 +15,7 @@ export const AppLayout = () => {
   const { token } = useConfig();
 
   const { auth } = useAuth();
-  const { lg } = Grid.useBreakpoint();
+  const { lg, md } = Grid.useBreakpoint();
 
   const [activeMenu, setActiveMenu] = useState(1);
 
@@ -41,7 +41,7 @@ export const AppLayout = () => {
           maxWidth: "1200px",
         }}
       >
-        <SidebarLeft activeMenu={activeMenu} />
+        {md ? <SidebarLeft activeMenu={activeMenu} /> : null}
 
         <Layout>
           <Layout.Content className="border-1-left border-1-right">
