@@ -4,7 +4,7 @@ import { Button, Modal, Typography } from "antd";
 
 import { useAuth } from "@contexts/AuthContext";
 
-import { Logo } from "@icons/logo";
+import { Logo } from "@icons/Logo";
 
 import "./Logout.css";
 import { useConfig } from "@hooks/useConfig";

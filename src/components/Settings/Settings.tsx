@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Modal, Switch, Typography } from "antd";
 
-import { Logo } from "@icons/logo";
+import { Logo } from "@icons/Logo";
 import { useCustomTheme } from "@contexts/CustomThemeContext";
 import { useConfig } from "@hooks/useConfig";
 

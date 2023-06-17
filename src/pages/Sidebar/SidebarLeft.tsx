@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useCustomTheme } from "@contexts/CustomThemeContext";
-import { Logo } from "@icons/logo";
+import { Logo } from "@icons/Logo";
 
 import { SideNavBar } from "./SideNavbar";
 import styles from "./styles/SidebarLeft.module.css";
@@ -16,7 +16,6 @@ export const SidebarLeft = ({ activeMenu }: { activeMenu: number }) => {
   const { token } = useConfig();
 
   const [isCollapsed, setIsCollapsed] = useState(true);
-
 
   function handleCollapse() {
     setIsCollapsed((p) => !p);

@@ -4,7 +4,7 @@ import axios from "axios";
 import { Form, Modal } from "antd";
 
 import { useAuth } from "@contexts/AuthContext";
-import { Logo } from "@icons/logo";
+import { Logo } from "@icons/Logo";
 import { API_ROUTES } from "@constants/Route_Constants";
 
 import "./login.css";
