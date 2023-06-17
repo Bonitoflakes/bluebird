@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
         "@pages": path.resolve(__dirname, "./src/pages"),
         "@types": path.resolve(__dirname, "./src/types"),
         "@theme": path.resolve(__dirname, "./src/theme"),
-        "@icons": path.resolve(__dirname, "./src/icons"),
+        // "@icons": path.resolve(__dirname, "./src/icons"),
         "@constants": path.resolve(__dirname, "./src/constants"),
       },
     },
