@@ -32,7 +32,7 @@
       "@types/*": ["./src/types/*"],
       "@theme/*": ["./src/theme/*"],
       "@constants/*": ["./src/constants/*"],
-      // "@icons/*": ["./src/icons/*"]
+      "@customIcons/*": ["./src/customIcons/*"]
     }
   },
   "include": ["src"],
