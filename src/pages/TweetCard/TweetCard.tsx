@@ -5,7 +5,7 @@ import Icon, {
   RetweetOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Space, Tooltip, Typography, Image } from "antd";
+import { Avatar, Button, Space, Tooltip, Typography } from "antd";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as dots } from "@assets/dots.svg";
