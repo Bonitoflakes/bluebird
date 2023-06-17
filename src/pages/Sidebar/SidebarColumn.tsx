@@ -2,8 +2,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Avatar, Button, Input, Space, Typography } from "antd";
 const { Title, Text } = Typography;
 
-import { ReactComponent as X } from "../../assets/x.svg";
-
+import { ReactComponent as X } from "@assets/x.svg";
 import styles from "./styles/SidebarColumn.module.css";
 
 export const SidebarColumn = () => {

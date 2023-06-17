@@ -18,16 +18,21 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [auth, setAuth] = useState(initialState);
 
-  const setAuthenticated = (user: User) => {
+  const handleLogin = (user: User) => {
     console.log("Setting auth", user);
+
     setAuth((prev) => {
       return { isAuthenticated: !prev.isAuthenticated, user };
     });
   };
 
+  const handleLogout = () => {
+    setAuth(initialState);
+  };
+
   return (
     <>
-      <AuthContext.Provider value={{ auth, setAuthenticated }}>{children}</AuthContext.Provider>
+      <AuthContext.Provider value={{ auth, handleLogin, handleLogout }}>{children}</AuthContext.Provider>
     </>
   );
 };
@@ -39,7 +44,7 @@ export const useAuth = () => {
     throw new Error("useCurrentUser has to be used within <CurrentUserContext.Provider>");
   }
 
-  const { auth, setAuthenticated } = userContext;
+  const { auth, handleLogin, handleLogout } = userContext;
 
-  return { auth, setAuthenticated };
+  return { auth, handleLogin, handleLogout };
 };

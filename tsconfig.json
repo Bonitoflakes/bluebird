@@ -20,17 +20,20 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
 
     /* Dynamic Paths  --> Update vite.config.ts if changed */
-    // "paths": {
-    //   "@assets": ["./assets/*"],
-    //   "@components": ["./src/components/*"],
-    //   "@contexts/*": ["./src/contexts/*"],
-    //   "@hooks": ["./src/hooks/*"],
-    //   "@pages": ["./src/pages/*"],
-    //   "@types/*": ["./src/types/*"]
-    // }
+    "paths": {
+      "@assets/*": ["./assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@types/*": ["./src/types/*"],
+      "@theme/*": ["./src/theme/*"],
+      "@icons/*": ["./src/icons/*"],
+      "@constants/*": ["./src/constants/*"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

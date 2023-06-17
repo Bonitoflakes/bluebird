@@ -1,4 +1,8 @@
 - [ ] setup alias.
 - [ ] add loaders.
 - [ ] fetch from API.
-- [ ] Complete Feed page.
+- [x] Complete Feed page.
+- [x] Login UI
+- [?] Login UI validation
+- [x] Login UI Refactor
+- [?] Formik vs ANTD Forms

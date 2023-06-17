@@ -8,10 +8,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
 
-html {
-  /* color-scheme: light dark; */
+  --gray: rgb(113, 118, 123);
+  --gray-dark: rgb(83, 100, 113);
+  --white: #ffffff;
+  --black: #000000;
+  --primary: rgb(29, 156, 240);
+  --pink: rgb(228, 110, 130);
+  --green: rgb(61, 234, 130);
 }
 
 /* Input Field */
@@ -19,11 +23,11 @@ html {
   border-radius: 100px;
   border-color: gray;
   width: 100%;
-  padding-left: 1rem !important;
+  padding-left: 0.7rem !important;
 
   &:focus,
   &:hover {
-    border-color: rgb(29, 156, 240);
+    border-color: var(--primary);
   }
 
   &::placeholder {
@@ -48,7 +52,13 @@ html {
 
 .ant-menu {
   border: none !important;
-  /* background-color: green !important; */
+}
+
+.reset-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 
 .centered {
@@ -67,12 +77,16 @@ html {
   box-sizing: border-box;
 }
 
-.m-0 {
-  margin: 0 !important;
-}
-
 .p-0 {
   padding: 0;
+}
+
+.p-0-25 {
+  padding: 0.25rem !important;
+}
+
+.p-0-5 {
+  padding: 0.5rem !important;
 }
 
 .p-0-75 {
@@ -83,8 +97,60 @@ html {
   padding: 1rem !important;
 }
 
+.p-1-25 {
+  padding: 1.25rem !important;
+}
+
+.p-1-5 {
+  padding: 1.5rem !important;
+}
+
+.p-1-75 {
+  padding: 1.75rem !important;
+}
+
+.p-2 {
+  padding: 2rem !important;
+}
+
+.py-1 {
+  padding: 1rem 0 !important;
+}
+
+.py-2 {
+  padding: 2rem 0rem !important;
+}
+
+.px-2 {
+  padding: 0 2rem !important;
+}
+
+.px-5-5 {
+  padding: 0 5.5rem !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
 .m-1 {
   margin: 1rem !important;
+}
+
+.mt-1 {
+  margin-top: 1rem !important;
+}
+
+.my-0-75 {
+  margin: 0.75rem 0 !important;
+}
+
+.my-1 {
+  margin: 1rem 0 !important;
+}
+
+.my-2-5 {
+  margin: 2.5rem 0 !important;
 }
 
 .gap-0 {
@@ -108,23 +174,23 @@ html {
 }
 
 .border-1 {
-  border: 1px solid #536471;
+  border: 1px solid var(--gray-dark);
 }
 
 .border-1-left {
-  border-left: 1px solid #536471;
+  border-left: 1px solid var(--gray-dark);
 }
 
 .border-1-right {
-  border-right: 1px solid #536471;
+  border-right: 1px solid var(--gray-dark);
 }
 
 .border-1-top {
-  border-top: 1px solid #536471;
+  border-top: 1px solid var(--gray-dark);
 }
 
 .border-1-bottom {
-  border-bottom: 1px solid #536471;
+  border-bottom: 1px solid var(--gray-dark);
 }
 
 .relative {
@@ -179,9 +245,40 @@ html {
   background-color: orange;
 }
 
+.color-gray {
+  color: var(--gray);
+}
 
-.w-100 {
-  width: 100%;
+.w-full {
+  width: 100% !important;
+}
+
+.h-full {
+  height: 100% !important;
+}
+
+.h-42 {
+  height: 42px !important;
+}
+
+.h-600 {
+  height: 600px !important;
+}
+
+.weight-600 {
+  font-weight: 600 !important;
+}
+
+.weight-700 {
+  font-weight: 700 !important;
+}
+
+.weight-800 {
+  font-weight: 800 !important;
+}
+
+.text-2 {
+  font-size: 2rem !important;
 }
 
 .tweet-actions--interactive {
@@ -191,29 +288,29 @@ html {
 .action--like:hover .anticon,
 .action--like:hover .action--like-text {
   transition: 0.3s ease color;
-  color: rgb(228, 110, 130) !important;
+  color: var(--pink) !important;
 }
 
 .action--retweet:hover .anticon,
 .action--retweet:hover .action--retweet-text {
   transition: 0.3s ease color;
-  color: rgb(61, 234, 130) !important;
+  color: var(--green) !important;
 }
 
 .action--view:hover .anticon,
 .action--view:hover .action--view-text {
   transition: 0.3s ease color;
-  color: rgb(47, 115, 241) !important;
+  color: var(--primary) !important;
 }
 
 .action--comment:hover .anticon,
 .action--comment:hover .action--comment-text {
   transition: 0.3s ease color;
-  color: rgb(47, 115, 241) !important;
+  color: var(--primary) !important;
 }
 
 .action--share:hover .anticon,
 .action--share:hover .action--share-text {
   transition: 0.3s ease color;
-  color: rgb(47, 115, 241) !important;
+  color: var(--primary) !important;
 }

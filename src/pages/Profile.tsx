@@ -1,7 +1,7 @@
 import { Button, Space, Typography } from "antd";
-import { UserInfo } from "../components/UserInfo/UserInfo";
+import { UserInfo } from "./UserInfo/UserInfo";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { TweetCard } from "../components/TweetCard/TweetCard";
+import { TweetCard } from "./TweetCard/TweetCard";
 const { Title, Text } = Typography;
 
 export const Profile = () => {
@@ -12,11 +12,6 @@ export const Profile = () => {
       <UserInfo />
 
       <div>
-        <TweetCard />
-        <TweetCard />
-        <TweetCard />
-        <TweetCard />
-        <TweetCard />
         <TweetCard />
       </div>
     </div>
@@ -30,7 +25,7 @@ export const UserHeader = () => {
         <ArrowLeftOutlined />
       </Button>
 
-      <Space.Compact direction="vertical" style={{ padding: "1rem 0 1rem 0" }}>
+      <Space.Compact direction="vertical" className="py-1">
         <Title className="m-0" level={5}>
           unfoldco
         </Title>

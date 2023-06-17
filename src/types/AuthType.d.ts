@@ -1,4 +1,4 @@
-import { initialState } from "../contexts/AuthContext";
+import { initialState } from "@contexts/AuthContext";
 
 type InitalStateType = typeof initialState;
 
@@ -12,5 +12,6 @@ export type User = {
 
 export type AuthContextType = {
   auth: InitalStateType;
-  setAuthenticated: (user: User) => void;
+  handleLogin: (user: User) => void;
+  handleLogout: () => void;
 };

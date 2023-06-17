@@ -1,21 +1,21 @@
-import {
+import Icon, {
   AlignCenterOutlined,
   CommentOutlined,
   HeartOutlined,
   RetweetOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Space, Tooltip, Typography } from "antd";
+import { Avatar, Button, Space, Tooltip, Typography, Image } from "antd";
 import { Link } from "react-router-dom";
-import { ReactComponent as dots } from "../../assets/dots.svg";
-import Icon from "@ant-design/icons/lib/components/Icon";
-import { useConfig } from "../../hooks/useToken";
+
+import { ReactComponent as dots } from "@assets/dots.svg";
+import { useConfig } from "@hooks/useConfig";
 
 const { Title, Text } = Typography;
 
 export const TweetCard = () => {
   return (
-    <div className="border-1-top border-1-bottom p-1">
+    <div className="p-1 border-1-bottom">
       {/* <ReTweeted /> */}
       <Tweet />
     </div>
@@ -33,7 +33,7 @@ export const Tweet = () => {
         <Avatar size={48} />
       </Space>
 
-      <div className="flex column flex-1 align-start ">
+      <div className="flex flex-1 column align-start ">
         <Line1 />
         <Line2 />
         <Line3 />
@@ -45,7 +45,7 @@ export const Tweet = () => {
 export const Line1 = () => {
   return (
     <>
-      <div className="flex align-center justify-between  w-100">
+      <div className="flex justify-between w-full align-center">
         <div className="flex gap-0-25">
           <Title level={5} className="m-0" style={{ fontSize: "13px", fontWeight: "800" }}>
             Harsh Mohite
@@ -78,6 +78,13 @@ export const Line2 = () => {
           you ❤️
           <br />
           <br />
+          <div style={{ width: "500px", height: "500px", marginBottom: "1rem" }}>
+            <img
+              src="https://pbs.twimg.com/media/FyvtTxUWAAEe2bY?format=jpg&name=large"
+              className="reset-img"
+              style={{ borderRadius: "20px" }}
+            />
+          </div>
           <a>https://d1t6fjrywdb.typeform.com/to/qLuXDLvr</a>
         </Text>
       </Space>
@@ -115,7 +122,7 @@ const userInteractionsList = [
 export const Line3 = () => {
   return (
     <>
-      <div className="flex  w-100 justify-between m-0-75" style={{ marginLeft: "-6px" }}>
+      <div className="flex justify-between w-full m-0-75" style={{ marginLeft: "-6px" }}>
         {userInteractionsList.map(({ shape, count, name }) => {
           return (
             <div className={`action--${name}`}>

@@ -2,9 +2,9 @@ import { ConfigProvider, theme } from "antd";
 
 import { AppLayout } from "./layouts/AppLayout";
 import { darkTheme, darkComponents, lightTheme } from "./theme";
+import { useCustomTheme } from "@contexts/CustomThemeContext";
 
 import "antd/dist/reset.css";
-import { useCustomTheme } from "./contexts/CustomThemeContext";
 
 function App() {
   const { darkMode } = useCustomTheme();
