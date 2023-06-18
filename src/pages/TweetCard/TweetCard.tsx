@@ -67,10 +67,6 @@ export const Line1 = () => {
 
 export const Line2 = () => {
   const { token } = useConfig();
-  const { md } = Grid.useBreakpoint();
-
-  console.log(md, "md");
-  const width = md ? "500px" : "300px";
 
   return (
     <>
@@ -79,15 +75,14 @@ export const Line2 = () => {
           We know you're busy and there's a lot to learn out there.
           <br />
           <br />
-          Let us know what content you're interested in learning and we'll make sure
-          to create it for you ❤️
+          Let us know what content you're interested in learning and we'll make sure to create it for you ❤️
           <br />
           <br />
-          <div style={{ width: width, height: width, marginBottom: "1rem" }}>
+          <div style={{ marginBottom: "1rem" }}>
             <img
               src="https://pbs.twimg.com/media/FyvtTxUWAAEe2bY?format=jpg&name=large"
               className="reset-img"
-              style={{ borderRadius: "20px" }}
+              style={{ borderRadius: "20px", maxHeight: "510px" }}
             />
           </div>
           <a>https://d1t6fjrywdb.typeform.com/to/qLuXDLvr</a>
@@ -101,12 +96,12 @@ const userInteractionsList = [
   {
     name: "comment",
     shape: <CommentOutlined />,
-    count: 23,
+    count: 2300,
   },
   {
     name: "retweet",
     shape: <RetweetOutlined />,
-    count: 0,
+    count: 1000,
   },
   {
     name: "like",
@@ -125,28 +120,42 @@ const userInteractionsList = [
 ];
 
 export const Line3 = () => {
+  const screens = Grid.useBreakpoint();
+  // console.table(screens);
+  const { xs, sm, lg, xl } = screens;
+
   return (
     <>
       <div className="flex justify-between w-full m-0-75" style={{ marginLeft: "-6px" }}>
         {userInteractionsList.map(({ shape, count, name }) => {
-          return (
-            <div className={`action--${name}`}>
-              <Link to="/">
-                <Tooltip
-                  title={name}
-                  arrow={false}
-                  color="gray"
-                  placement="top"
-                  style={{ fontSize: "0.5rem" }}
-                >
-                  <Button type="text" shape="circle" icon={shape} />
-                  {count ? <Text className={`action--${name}-text`}>{count}</Text> : null}
-                </Tooltip>
-              </Link>
-            </div>
-          );
+          const isMobile = xs && name === "view";
+
+          if (isMobile) return null;
+
+          return <RenderIcon key={name} name={name} shape={shape} count={count} />;
         })}
       </div>
     </>
+  );
+};
+
+export const RenderIcon = ({
+  name,
+  shape,
+  count,
+}: {
+  name: string;
+  shape: JSX.Element;
+  count: number | undefined;
+}) => {
+  return (
+    <div className={`action--${name}`} key={name}>
+      <Link to="/">
+        <Tooltip title={name} arrow={false} color="gray" placement="top" style={{ fontSize: "0.5rem" }}>
+          <Button type="text" shape="circle" icon={shape} />
+          {count ? <Text className={`action--${name}-text`}>{count}</Text> : null}
+        </Tooltip>
+      </Link>
+    </div>
   );
 };

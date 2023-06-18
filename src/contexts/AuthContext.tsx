@@ -21,9 +21,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const handleLogin = (user: User) => {
     console.log("Setting auth", user);
 
-    setAuth((prev) => {
-      return { isAuthenticated: !prev.isAuthenticated, user };
-    });
+    if (user) return setAuth((prev) => ({ isAuthenticated: !prev.isAuthenticated, user }));
+
+    throw new Error("Something went wrong, please check the user object");
   };
 
   const handleLogout = () => {

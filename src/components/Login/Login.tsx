@@ -71,7 +71,11 @@ export const Login = () => {
       const delay = new Promise((resolve) => setTimeout(resolve, 2000));
       await delay;
 
-      if (!data) {
+      console.log("User found:---", data);
+      if (data) {
+        handleLogin(data);
+        return navigate(location.state?.from || "/");
+      } else {
         setDisabledSave((p) => !p);
         setCreds((prev) => ({
           ...prev,
@@ -82,9 +86,6 @@ export const Login = () => {
           },
         }));
       }
-
-      handleLogin(data);
-      return navigate(location.state?.from || "/");
     } catch (error) {
       console.error(error);
       return setCreds((prev) => ({

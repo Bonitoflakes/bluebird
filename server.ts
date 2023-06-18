@@ -29,7 +29,7 @@ export function startMockServer() {
         email: "rishab.khivsara@gmail.com",
         bio: "Howdy mates!!",
         avatar: faker.image.avatar(),
-        password: "123456",
+        password: "rishabrocks",
       });
     },
 
@@ -38,8 +38,8 @@ export function startMockServer() {
 
       this.post("/validate-user", (schema, request) => {
         const requestBody = JSON.parse(request.requestBody);
-        const { username, email, phone } = requestBody;
-        const userToBeFound = username || email || phone;
+        const { username } = requestBody;
+        const userToBeFound = username;
 
         const user = schema.db.users.findBy({ email: userToBeFound });
 
@@ -52,7 +52,7 @@ export function startMockServer() {
         const requestBody = JSON.parse(request.requestBody);
         const { username, password } = requestBody;
 
-        const user = schema.db.users.findBy({ email: username, password });
+        const user = schema.db.users.findBy({ password });
 
         console.log(user, "user");
         console.log(requestBody, "requestBody");
