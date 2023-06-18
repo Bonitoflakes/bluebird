@@ -9,8 +9,8 @@ import App from "./App.tsx";
 import "./index.css";
 
 import { startMockServer } from "../server";
-import { makeServer } from "./backend/server.js";
 
+// import { makeServer } from "./backend/server.js";
 // makeServer();
 
 // Start the mock server

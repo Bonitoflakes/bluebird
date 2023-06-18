@@ -122,7 +122,7 @@ const userInteractionsList = [
 export const Line3 = () => {
   const screens = Grid.useBreakpoint();
   // console.table(screens);
-  const { xs, sm, lg, xl } = screens;
+  const { xs} = screens;
 
   return (
     <>

@@ -52,7 +52,7 @@ export function startMockServer() {
         const requestBody = JSON.parse(request.requestBody);
         const { username, password } = requestBody;
 
-        const user = schema.db.users.findBy({ password });
+        const user = schema.db.users.findBy({ email: username, password });
 
         console.log(user, "user");
         console.log(requestBody, "requestBody");
