@@ -91,7 +91,7 @@ export const Signup = () => {
     navigate(-1);
   };
 
-  const handleFormChange = async (currField: any, allFields: any) => {
+  const handleFormChange = async (currField: any) => {
     const fieldName = currField[0]?.name[0];
     const fieldValue = currField[0]?.value;
     // console.log(fieldName, fieldValue);
@@ -224,13 +224,13 @@ export const Signup = () => {
         username,
         password,
       });
-      console.log(data)
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const onFinish = async (values: any) => {
+  const onFinish = async () => {
     switch (step) {
       case 1:
         setStep(2);

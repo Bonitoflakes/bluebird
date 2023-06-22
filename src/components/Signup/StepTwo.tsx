@@ -1,6 +1,5 @@
 import { Button, Form, Input, Typography } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
 
 import { ICreds } from "./Signup";
 
@@ -11,7 +10,7 @@ interface IStepTwo {
   disabledSave: boolean;
 }
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 export const StepTwo = ({ creds, disabledSave }: IStepTwo) => {
   return (

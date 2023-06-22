@@ -2,8 +2,6 @@ import { Button, Form, Grid, Input, Select, Typography } from "antd";
 import { ICreds } from "./Signup";
 
 import "./signup.css";
-import { useConfig } from "@hooks/useConfig";
-
 const { Title, Text } = Typography;
 
 interface IStepOne {
@@ -63,7 +61,6 @@ const DOB_DATES = [
 ];
 
 export const StepOne = ({ creds, disabledSave }: IStepOne) => {
-  const { token } = useConfig();
   const { md } = Grid.useBreakpoint();
 
   return (
@@ -152,17 +149,5 @@ export const StepOne = ({ creds, disabledSave }: IStepOne) => {
         </Button>
       </div>
     </>
-  );
-};
-
-const Line = () => {
-  return (
-    <div className="flex w-full align-center">
-      <div style={{ margin: "8px 0", height: "1px", background: "gray", width: "100px", flex: "1" }}></div>
-      <p className="m-0" style={{ padding: "0 0.25rem", fontSize: "17px" }}>
-        or
-      </p>
-      <div style={{ margin: "8px 0", height: "1px", background: "gray", width: "100px", flex: "1" }}></div>
-    </div>
   );
 };

@@ -148,7 +148,6 @@ const mobileIcons = [
 const MobileNav = () => {
   const { token } = useConfig();
   const [current, setCurrent] = useState("home");
-  const { pathname } = location;
 
   // useEffect(() => {
   //   const trimmedPath = pathname.slice(1);
