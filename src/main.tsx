@@ -8,13 +8,11 @@ import { CustomThemeProvider } from "@contexts/CustomThemeContext.tsx";
 import App from "./App.tsx";
 import "./index.css";
 
-import { startMockServer } from "../server";
+import { makeServer } from "./backend/server.js";
+makeServer();
 
-// import { makeServer } from "./backend/server.js";
-// makeServer();
-
-// Start the mock server
-startMockServer();
+// import { startMockServer } from "../server";
+// startMockServer();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>

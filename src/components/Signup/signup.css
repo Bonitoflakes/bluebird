@@ -1,0 +1,12 @@
+.signup-select .ant-select-selector {
+  border-radius: 5px !important;
+  align-items: center;
+  height: 52px !important;
+  /* padding: 1rem !important; */
+}
+
+
+.password-input {
+  border-radius: 5px !important;
+  padding: 1rem !important;
+}

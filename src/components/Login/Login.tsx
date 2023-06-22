@@ -149,7 +149,7 @@ export const Login = () => {
 
       return setStep(2);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return setCreds((prev) => ({
         ...prev,
         username: { ...prev.username, status: "error", help: "Something went wrong" },

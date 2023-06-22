@@ -8,6 +8,7 @@ import { Login } from "../components/Login";
 import { Logout } from "../components/Logout";
 import { Settings } from "../components/Settings";
 import { Home } from "@pages/Home/Home";
+import { Signup } from "@components/Signup";
 
 // import { ConfigCheck } from "../theme/Configchecker";
 
@@ -21,6 +22,7 @@ export const AppRoutes = () => {
         <Route path="/" element={<Home />} />
 
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/settings" element={<Settings />} />
 

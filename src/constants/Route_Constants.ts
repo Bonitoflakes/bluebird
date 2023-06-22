@@ -1,16 +1,17 @@
 const APP_ROUTES = {
   HOME: "/",
   LOGIN: "/login",
-  REGISTER: "/register",
+  SIGNUP: "/signup",
   PROFILE: "/profile",
   SETTINGS: "/settings",
 };
 
-const base_API_URL = "/api";
+const BASE_API_URL = "/api";
 
 const API_ROUTES = {
-  VALIDATE_USER: `${base_API_URL}/validate-user`,
-  LOGIN: `${base_API_URL}/login`,
+  VALIDATE_USER: `${BASE_API_URL}/auth/validate-user`,
+  LOGIN: `${BASE_API_URL}/auth/login`,
+  SIGNUP: `${BASE_API_URL}/auth/signup`,
 };
 
 export { APP_ROUTES, API_ROUTES };

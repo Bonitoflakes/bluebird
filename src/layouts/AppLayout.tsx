@@ -34,9 +34,12 @@ export const AppLayout = () => {
   useEffect(() => {
     const stripPath = pathname.slice(1);
 
-    const matchedLink = SideBarLinks.find(() => {
+    const matchedLink = SideBarLinks.find(({ label }) => {
       if (stripPath === "") return true;
+      if (stripPath === label) return true;
     });
+
+    console.log("matchedLink", matchedLink);
 
     setActiveMenu((prev) => matchedLink?.id || prev);
   }, [pathname]);
@@ -106,6 +109,9 @@ export const StickyFooter = () => {
             size="large"
             style={{ borderRadius: "50px" }}
             block={!md}
+            onClick={() => {
+              navigate("/signup");
+            }}
           >
             Signup
           </Button>
@@ -144,15 +150,17 @@ const MobileNav = () => {
   const [current, setCurrent] = useState("home");
   const { pathname } = location;
 
-  useEffect(() => {
-    const trimmedPath = pathname.slice(1);
-    const isValidMobileNav = mobileIcons.find(({ key }) => {
-      if (trimmedPath === "") return true;
-      if (trimmedPath === key) return true;
-      return false;
-    });
-    setCurrent((prevPath) => (isValidMobileNav ? trimmedPath : prevPath));
-  }, [pathname]);
+  // useEffect(() => {
+  //   const trimmedPath = pathname.slice(1);
+  //   console.log(trimmedPath);
+
+  //   const isValidMobileNav = mobileIcons.find(({ key }) => {
+  //     if (trimmedPath === "") return true;
+  //     if (trimmedPath === key) return true;
+  //     return false;
+  //   });
+  //   setCurrent((prevPath) => (isValidMobileNav ? trimmedPath : prevPath));
+  // }, [pathname]);
 
   const activeStyles = {
     color: token.colorPrimary,
