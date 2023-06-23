@@ -147,25 +147,26 @@ const mobileIcons = [
 
 const MobileNav = () => {
   const { token } = useConfig();
+  const { pathname } = useLocation();
   const [current, setCurrent] = useState("home");
 
-  // useEffect(() => {
-  //   const trimmedPath = pathname.slice(1);
-  //   console.log(trimmedPath);
+  useEffect(() => {
+    const trimmedPath = pathname.slice(1);
+    console.log(trimmedPath);
 
-  //   const isValidMobileNav = mobileIcons.find(({ key }) => {
-  //     if (trimmedPath === "") return true;
-  //     if (trimmedPath === key) return true;
-  //     return false;
-  //   });
-  //   setCurrent((prevPath) => (isValidMobileNav ? trimmedPath : prevPath));
-  // }, [pathname]);
+    const isValidMobileNav = mobileIcons.find(({ key }) => {
+      if (trimmedPath === "") return true;
+      if (trimmedPath === key) return true;
+      return false;
+    });
+    setCurrent((prevPath) => (isValidMobileNav ? trimmedPath : prevPath));
+  }, [pathname]);
 
   const activeStyles = {
     color: token.colorPrimary,
     fontWeight: "bold",
     cursor: "pointer",
-    textDecoration: "underline",
+    fontSize: "1.5rem",
   };
 
   const inactiveStyles = {
@@ -173,6 +174,7 @@ const MobileNav = () => {
     fontWeight: "normal",
     cursor: "pointer",
     textDecoration: "none",
+    fontSize: "1.5rem",
   };
 
   return (
