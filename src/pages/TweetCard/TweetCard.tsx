@@ -10,10 +10,27 @@ import { Link } from "react-router-dom";
 
 import { ReactComponent as dots } from "@assets/dots.svg";
 import { useConfig } from "@hooks/useConfig";
+import { createContext, useContext } from "react";
 
 const { Title, Text } = Typography;
 
-export const TweetCard = () => {
+interface IPost {
+  _id: any;
+  content: string;
+  mediaURL: string;
+  mediaAlt: string;
+  likes: {
+    likeCount: number;
+    likedBy: never[];
+    dislikedBy: never[];
+  };
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+  comments: never[];
+}
+
+export const TweetCard = ({ post }: { post: IPost }) => {
   return (
     <div className="p-1 border-1-bottom">
       {/* <ReTweeted /> */}
@@ -122,7 +139,7 @@ const userInteractionsList = [
 export const Line3 = () => {
   const screens = Grid.useBreakpoint();
   // console.table(screens);
-  const { xs} = screens;
+  const { xs } = screens;
 
   return (
     <>
