@@ -10,31 +10,19 @@ import { Link } from "react-router-dom";
 
 import { ReactComponent as dots } from "@assets/dots.svg";
 import { useConfig } from "@hooks/useConfig";
-import { createContext, useContext } from "react";
+import { TweetContextProvider } from "@contexts/TweetContext";
+import { ITweetCard } from "@customTypes/TweetType";
 
 const { Title, Text } = Typography;
 
-interface IPost {
-  _id: any;
-  content: string;
-  mediaURL: string;
-  mediaAlt: string;
-  likes: {
-    likeCount: number;
-    likedBy: never[];
-    dislikedBy: never[];
-  };
-  username: string;
-  createdAt: string;
-  updatedAt: string;
-  comments: never[];
-}
-
-export const TweetCard = ({ post }: { post: IPost }) => {
+export const TweetCard = ({ post }: { post: ITweetCard }) => {
   return (
     <div className="p-1 border-1-bottom">
       {/* <ReTweeted /> */}
-      <Tweet />
+
+      <TweetContextProvider post={post}>
+        <Tweet />
+      </TweetContextProvider>
     </div>
   );
 };
