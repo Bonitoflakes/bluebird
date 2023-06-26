@@ -9,6 +9,36 @@ import { formatDate } from "../utils/authUtils";
 export const posts = [
   {
     _id: uuid(),
+    content: "Enjoy the night city.",
+    mediaURL: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    mediaAlt: "sunset over mountains",
+    likes: {
+      likeCount: 120,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "naturelover",
+    createdAt: "2023-01-26T18:25:08.239Z",
+    updatedAt: formatDate(),
+    comments: [],
+  },
+  {
+    _id: uuid(),
+    content: "Tears of steel.",
+    mediaURL: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    mediaAlt: "sunset over mountains",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "naturelover",
+    createdAt: "2023-01-26T18:25:08.239Z",
+    updatedAt: formatDate(),
+    comments: [],
+  },
+  {
+    _id: uuid(),
     content:
       "The beauty of nature never ceases to amaze me. Each time I step outside, I'm greeted by vibrant flowers, towering trees, and the melody of birdsong. It's a reminder of the wonders that exist beyond our everyday lives.",
     mediaURL:
@@ -20,7 +50,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "naturelover",
-    createdAt: formatDate(),
+    createdAt: "2020-01-26T18:25:08.239Z",
     updatedAt: formatDate(),
     comments: [],
   },
@@ -45,8 +75,7 @@ export const posts = [
     _id: uuid(),
     content:
       "The power of literature lies in its ability to transport us to different worlds. With each turn of the page, we embark on new adventures, meet intriguing characters, and explore the depths of the human experience. Books have the power to ignite our imagination and broaden our horizons.",
-    mediaURL:
-      "https://images.pexels.com/photos/3756676/pexels-photo-3756676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    mediaURL: "https://images.pexels.com/photos/1215714/pexels-photo-1215714.jpeg",
     mediaAlt: "stack of books",
     likes: {
       likeCount: 20,

@@ -12,5 +12,5 @@ export const useTweet = () => {
   if (!context) {
     throw new Error("useTweet must be used within a TweetContextProvider");
   }
-  return useContext(TweetContext);
+  return context;
 };

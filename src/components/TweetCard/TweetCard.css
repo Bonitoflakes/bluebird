@@ -1,0 +1,49 @@
+.tweet-img,
+.tweet-video {
+  border-radius: 1.25rem;
+  max-height: 32rem;
+}
+
+.tweet-video {
+  max-width: 32rem;
+}
+
+.action--like:hover,
+.action--like:hover .anticon,
+.action--like:hover .action--like-text {
+  transition: 0.3s ease color;
+  color: var(--pink) !important;
+  background-color: transparent !important;
+}
+
+.action--retweet:hover,
+.action--retweet:hover .anticon,
+.action--retweet:hover .action--retweet-text {
+  transition: 0.3s ease color;
+  color: var(--green) !important;
+  background-color: transparent !important;
+}
+
+.action--view:hover,
+.action--view:hover .anticon,
+.action--view:hover .action--view-text {
+  transition: 0.3s ease color;
+  color: var(--primary) !important;
+  background-color: transparent !important;
+}
+
+.action--comment:hover,
+.action--comment:hover .anticon,
+.action--comment:hover .action--comment-text {
+  transition: 0.3s ease color;
+  color: var(--primary) !important;
+  background-color: transparent !important;
+}
+
+.action--share:hover,
+.action--share:hover .anticon,
+.action--share:hover .action--share-text {
+  transition: 0.3s ease color;
+  color: var(--primary) !important;
+  background-color: transparent !important;
+}

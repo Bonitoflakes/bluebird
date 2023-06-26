@@ -1,4 +1,4 @@
-import { TweetCard } from "@pages/TweetCard/TweetCard";
+import { TweetCard } from "@components/TweetCard/TweetCard";
 // FIX: Remove direct import, useEffect DB Call.
 import { posts } from "../../backend/db/posts";
 
