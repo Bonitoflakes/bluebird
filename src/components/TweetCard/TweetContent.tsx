@@ -11,7 +11,7 @@ export const TweetContent = () => {
   const isVideo = mediaURL.endsWith(".mp4") 
 
   const media = isVideo ? (
-    <video controls muted className="tweet-video">
+    <video controls muted preload="metadata" controlsList="nofullscreen nodownload" className="tweet-video">
       <source src={mediaURL} type="video/mp4" />
     </video>
   ) : (

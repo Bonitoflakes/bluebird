@@ -6,6 +6,7 @@
 
 .tweet-video {
   max-width: 32rem;
+  width: 100%;
 }
 
 .action--like:hover,
