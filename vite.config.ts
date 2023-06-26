@@ -23,10 +23,10 @@ export default defineConfig(({ mode }) => {
         "@contexts": path.resolve(__dirname, "./src/contexts"),
         "@hooks": path.resolve(__dirname, "./src/hooks"),
         "@pages": path.resolve(__dirname, "./src/pages"),
+        "@types": path.resolve(__dirname, "./src/types"),
         "@theme": path.resolve(__dirname, "./src/theme"),
-        "@constants": path.resolve(__dirname, "./src/constants"),
-        "@customTypes": path.resolve(__dirname, "./src/customTypes"),
         "@customIcons": path.resolve(__dirname, "./src/customIcons"),
+        "@constants": path.resolve(__dirname, "./src/constants"),
       },
     },
   };
