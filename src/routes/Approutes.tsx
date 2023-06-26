@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Typography } from "antd";
 
-import { ProtectedRoute } from "../components/HOC/ProtectedRoute";
+import { ProtectedRoute } from "@components/HOC/AUTH/ProtectedRoute";
 
 import { Profile } from "../pages/Profile";
 import { Login } from "../components/Login";
