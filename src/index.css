@@ -57,7 +57,7 @@
 .reset-img {
   display: block;
   max-width: 100%;
-  max-height: 100%;
+  /* max-height: 100%; */
   object-fit: cover;
 }
 
@@ -163,6 +163,10 @@
 
 .gap-0-25 {
   gap: 0.25rem !important;
+}
+
+.gap-0-5 {
+  gap: 0.5rem !important;
 }
 
 .gap-0-75 {
@@ -301,40 +305,14 @@
   font-weight: 800 !important;
 }
 
+.text-1 {
+  font-size: 1rem !important;
+}
+
+.text-0-75 {
+  font-size: 0.75rem !important;
+}
+
 .text-2 {
   font-size: 2rem !important;
-}
-
-.tweet-actions--interactive {
-  display: flex;
-}
-
-.action--like:hover .anticon,
-.action--like:hover .action--like-text {
-  transition: 0.3s ease color;
-  color: var(--pink) !important;
-}
-
-.action--retweet:hover .anticon,
-.action--retweet:hover .action--retweet-text {
-  transition: 0.3s ease color;
-  color: var(--green) !important;
-}
-
-.action--view:hover .anticon,
-.action--view:hover .action--view-text {
-  transition: 0.3s ease color;
-  color: var(--primary) !important;
-}
-
-.action--comment:hover .anticon,
-.action--comment:hover .action--comment-text {
-  transition: 0.3s ease color;
-  color: var(--primary) !important;
-}
-
-.action--share:hover .anticon,
-.action--share:hover .action--share-text {
-  transition: 0.3s ease color;
-  color: var(--primary) !important;
 }
