@@ -1,7 +1,7 @@
 import { Button, Space, Typography } from "antd";
 import { UserInfo } from "./UserInfo/UserInfo";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { TweetCard } from "../components/TweetCard/TweetCard";
+import { TweetCard } from "./TweetCard/TweetCard";
 const { Title, Text } = Typography;
 
 export const Profile = () => {

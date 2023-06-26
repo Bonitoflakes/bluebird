@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { ReactNode, createContext, useContext, useState } from "react";
-import { AuthContextType, User } from "../customTypes/AuthType";
+import { AuthContextType, User } from "../types/AuthType";
 
 export const initialState = {
   isAuthenticated: false,
