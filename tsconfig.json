@@ -30,7 +30,7 @@
       "@contexts/*": ["./src/contexts/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@pages/*": ["./src/pages/*"],
-      "@types/*": ["./src/types/*"],
+      "@customTypes/*": ["./src/customTypes/*"],
       "@theme/*": ["./src/theme/*"],
       "@constants/*": ["./src/constants/*"],
       "@customIcons/*": ["./src/customIcons/*"]
