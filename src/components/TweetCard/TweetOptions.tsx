@@ -17,9 +17,14 @@ export const TweetOptions = () => {
 
   const icons = [
     { name: "comment", shape: <CommentOutlined />, count: comments.length },
-    { name: "retweet", shape: <RetweetOutlined />, count: Math.ceil(Math.random() * 10000 )},
+    { name: "retweet", shape: <RetweetOutlined />, count: Math.ceil(Math.random() * 10000) },
     { name: "like", shape: <HeartOutlined />, count: likes.likeCount },
-    { name: "view", shape: <AlignCenterOutlined />, count: Math.ceil(Math.random() * 9999 ), hideOnMobile: true },
+    {
+      name: "view",
+      shape: <AlignCenterOutlined />,
+      count: Math.ceil(Math.random() * 9999),
+      hideOnMobile: true,
+    },
     { name: "share", shape: <UploadOutlined /> },
   ];
 
@@ -28,7 +33,7 @@ export const TweetOptions = () => {
       <div className="flex justify-between w-full m-0-75" style={{ marginLeft: "-6px" }}>
         {icons.map((icon, index) => (
           <RenderIcon
-            key={index}
+            key={`options-${index}`}
             name={icon.name}
             shape={icon.shape}
             count={icon.count}

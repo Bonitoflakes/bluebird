@@ -1,7 +1,7 @@
 import { Server, Model, RestSerializer } from "miragejs";
-import { posts } from "./db/posts.js";
-import { users } from "./db/users.js";
-import { loginHandler, signupHandler } from "./controllers/AuthController.js";
+import { posts } from "./db/posts";
+import { users } from "./db/users";
+import { loginHandler, signupHandler } from "./controllers/AuthController";
 import {
   createPostHandler,
   getAllpostsHandler,
@@ -11,7 +11,7 @@ import {
   likePostHandler,
   dislikePostHandler,
   getAllUserPostsHandler,
-} from "./controllers/PostController.js";
+} from "./controllers/PostController";
 import {
   followUserHandler,
   getAllUsersHandler,
@@ -21,12 +21,16 @@ import {
   removePostFromBookmarkHandler,
   unfollowUserHandler,
   editUserHandler,
-} from "./controllers/UserController.js";
+} from "./controllers/UserController";
+import {
+  getPostCommentsHandler,
+  addPostCommentHandler,
+  editPostCommentHandler,
+  deletePostCommentHandler,
+  upvotePostCommentHandler,
+  downvotePostCommentHandler,
+} from "./controllers/CommentsController";
 
-// import dotenv from "dotenv";
-// dotenv.config();
-
-console.log(import.meta.env);
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -41,13 +45,13 @@ export function makeServer({ environment = "development" } = {}) {
 
     // Runs on the start of the server
     seeds(server) {
-      server.logging = true;
+      server.logging = false;
       users.forEach((item) =>
         server.create("user", {
-          ...item,
           followers: [],
           following: [],
           bookmarks: [],
+          ...item,
         })
       );
       posts.forEach((item) => server.create("post", { ...item }));
@@ -89,10 +93,22 @@ export function makeServer({ environment = "development" } = {}) {
       // user routes (private)
       this.post("users/edit", editUserHandler.bind(this));
       this.get("/users/bookmark", getBookmarkPostsHandler.bind(this));
-      this.post("/users/bookmark/:postId/", bookmarkPostHandler.bind(this));
-      this.post("/users/remove-bookmark/:postId/", removePostFromBookmarkHandler.bind(this));
-      this.post("/users/follow/:followUserId/", followUserHandler.bind(this));
-      this.post("/users/unfollow/:followUserId/", unfollowUserHandler.bind(this));
+      this.post("/users/bookmark/:postId", bookmarkPostHandler.bind(this));
+      this.post("/users/remove-bookmark/:postId", removePostFromBookmarkHandler.bind(this));
+      this.post("/users/follow/:followUserId", followUserHandler.bind(this));
+      this.post("/users/unfollow/:followUserId", unfollowUserHandler.bind(this));
+
+      //post comments routes (public)
+      this.get("/comments/:postId", getPostCommentsHandler.bind(this));
+
+      //post comments routes (private)
+      this.post("/comments/add/:postId", addPostCommentHandler.bind(this));
+      this.post("/comments/edit/:postId/:commentId", editPostCommentHandler.bind(this));
+      this.post("/comments/delete/:postId/:commentId", deletePostCommentHandler.bind(this));
+      this.post("/comments/upvote/:postId/:commentId", upvotePostCommentHandler.bind(this));
+      this.post("/comments/downvote/:postId/:commentId", downvotePostCommentHandler.bind(this));
+
+      this.passthrough("https://api.cloudinary.com/v1_1/dxnbnviuz/auto/upload");
     },
   });
 }
