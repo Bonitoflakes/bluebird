@@ -39,7 +39,7 @@ export const SidebarLeft = ({ activeMenu }: { activeMenu: number }) => {
         }}
         className={styles.nav}
       >
-        <div>
+        <div className="p-0-5">
           <div className={styles.logo}>
             <Logo size={2} />
           </div>
@@ -59,7 +59,7 @@ export const SidebarLeft = ({ activeMenu }: { activeMenu: number }) => {
               >
                 <Avatar size={50} />
 
-                <span className="flex justify-start column align-start">
+                <span className="flex justify-start flex-col align-start">
                   <h1 className="m-0 weight-600" style={{ fontSize: "24px", color: token.colorText }}>
                     {!isCollapsed && "unfold"}
                   </h1>

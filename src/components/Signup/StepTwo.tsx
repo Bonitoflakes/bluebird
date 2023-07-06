@@ -15,7 +15,7 @@ const { Title } = Typography;
 export const StepTwo = ({ creds, disabledSave }: IStepTwo) => {
   return (
     <>
-      <div className="flex justify-between w-full h-full align-start column">
+      <div className="flex justify-between w-full h-full align-start flex-col">
         <div className="w-full">
           <Title level={3} className="my-1 weight-700 text-2">
             Set up your password

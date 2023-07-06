@@ -44,11 +44,11 @@ export const Logout = () => {
       footer={null}
     >
       <div
-        className="w-full gap-1 p-2 centered column"
+        className="w-full gap-1 p-2 centered flex-col"
         style={{ background: token.colorBgLayout, borderRadius: "20px" }}
       >
         <Logo />
-        <div className="flex column align-start">
+        <div className="flex flex-col align-start">
           <Title level={4} className="weight-700" style={{ color: token.colorTextBase }}>
             Log out of Twitter?
           </Title>

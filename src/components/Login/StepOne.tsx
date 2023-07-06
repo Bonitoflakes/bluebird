@@ -19,7 +19,7 @@ export const StepOne = ({ username, disabledSave }: IStepOne) => {
 
   return (
     <>
-      <div className={`flex w-full align-start column ${md ? "px-5-5" : ""}`}>
+      <div className={`flex w-full align-start flex-col ${md ? "px-5-5" : ""}`}>
         <Title level={3} className="my-1 text-2 weight-600">
           Sign in to Twitter
         </Title>

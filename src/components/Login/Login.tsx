@@ -188,7 +188,7 @@ export const Login = () => {
   return (
     <div>
       <Modal open={isOpen} width={600} footer={null} onCancel={handleCancel} centered>
-        <div className="flex p-2 column align-center">
+        <div className="flex p-2 flex-col align-center">
           <Logo />
 
           <Form

@@ -65,7 +65,7 @@ export const StepOne = ({ creds, disabledSave }: IStepOne) => {
 
   return (
     <>
-      <div className={`flex w-full align-start column ${md ? "px-4" : ""}`}>
+      <div className={`flex w-full align-start flex-col ${md ? "px-4" : ""}`}>
         <Title level={3} className="my-1 text-2 weight-700">
           Create your account
         </Title>

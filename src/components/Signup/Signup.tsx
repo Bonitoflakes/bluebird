@@ -261,7 +261,7 @@ export const Signup = () => {
   return (
     <div>
       <Modal open={isOpen} width={600} footer={null} onCancel={handleCancel} centered>
-        <div className="flex p-2 column align-center">
+        <div className="flex p-2 flex-col align-center">
           <Title level={5} className="weight-900 text-1 self-start">
             Step {step} of 5
           </Title>

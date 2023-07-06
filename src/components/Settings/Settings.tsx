@@ -34,11 +34,11 @@ export const Settings = () => {
       footer={null}
     >
       <div
-        className="w-full gap-1 p-2 centered column"
+        className="w-full gap-1 p-2 centered flex-col"
         style={{ background: token.colorBgLayout, borderRadius: "22px" }}
       >
         <Logo />
-        <div className="flex w-full column align-start">
+        <div className="flex w-full flex-col align-start">
           <Title level={4} className="weight-700" style={{ color: token.colorPrimaryText }}>
             Settings
           </Title>

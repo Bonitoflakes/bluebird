@@ -25,7 +25,7 @@ export const TweetLayout = () => {
         <Avatar size={48} />
       </Space>
 
-      <div className="flex flex-1 column align-start ">
+      <div className="flex flex-1 flex-col align-start ">
         <UserDetails />
         <TweetContent />
         <TweetOptions />
